@@ -45,34 +45,110 @@
           <q-tab name="sobremesas" label="Sobremesas" />
         </q-tabs>
       </div>
-      <div style="margin-top: 100px; margin-bottom: 100px">
-        <div class="little-card">
-          <img
-            src="../assets/kb2kspprfktxf6xive7zbjoeujkchq0ox03jnyy6.jpeg"
-            alt=""
-            style="
-              position: relative;
-              width: 164.16px;
-              height: 164.16px;
-              left: 30px;
-              top: -50px;
-              border-radius: 100%;
-              display: block;
-              box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
-            "
-          />
-          <h5 class="text-center" style="background-color: white; margin: 0">
-            Bife Acebolado
-          </h5>
+      <q-tab-panels v-model="tab" animated style="height: 100vh">
+        <q-tab-panel name="pratos">
+          <div style="margin-top: 100px; margin-bottom: 100px">
+            <div class="little-card">
+              <img
+                src="../assets/kb2kspprfktxf6xive7zbjoeujkchq0ox03jnyy6.jpeg"
+                alt=""
+                style="
+                  position: relative;
+                  object-fit: cover;
+                  width: 164.16px;
+                  height: 164.16px;
+                  left: 30px;
+                  top: -50px;
+                  border-radius: 100%;
+                  display: block;
+                  box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
+                "
+              />
+              <h5
+                class="text-center"
+                style="background-color: white; margin: 0"
+              >
+                Bife Acebolado
+              </h5>
 
-          <h5
-            class="text-center text-deep-orange-7"
-            style="background-color: white; margin: 15px 0 0 0"
-          >
-            50$
-          </h5>
-        </div>
-      </div>
+              <h5
+                class="text-center text-deep-orange-7"
+                style="background-color: white; margin: 15px 0 0 0"
+              >
+                50$
+              </h5>
+            </div>
+          </div>
+        </q-tab-panel>
+        <q-tab-panel name="bebidas">
+          <div style="margin-top: 100px; margin-bottom: 100px">
+            <div class="little-card">
+              <img
+                src="../assets/6333b7002c0260f1972f5cdcf6b85e5a-coca2L.png"
+                alt="coca2L"
+                style="
+                  position: relative;
+                  object-fit: cover;
+                  width: 164.16px;
+                  height: 164.16px;
+                  left: 30px;
+                  top: -50px;
+                  border-radius: 100%;
+                  display: block;
+                  box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
+                "
+              />
+              <h5
+                class="text-center"
+                style="background-color: white; margin: 0"
+              >
+                Cola Cola 2L
+              </h5>
+
+              <h5
+                class="text-center text-deep-orange-7"
+                style="background-color: white; margin: 15px 0 0 0"
+              >
+                12$
+              </h5>
+            </div>
+          </div>
+        </q-tab-panel>
+        <q-tab-panel name="sobremesas">
+          <div style="margin-top: 100px; margin-bottom: 100px">
+            <div class="little-card">
+              <img
+                src="../assets/4678e05dc2d35b34ba794e54338dadcc-taÃ§a.jpg"
+                alt="taça de sorvete"
+                style="
+                  position: relative;
+                  object-fit: cover;
+                  width: 164.16px;
+                  height: 164.16px;
+                  left: 30px;
+                  top: -50px;
+                  border-radius: 100%;
+                  display: block;
+                  box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
+                "
+              />
+              <h5
+                class="text-center"
+                style="background-color: white; margin: 0"
+              >
+                Taça de Sorvete
+              </h5>
+
+              <h5
+                class="text-center text-deep-orange-7"
+                style="background-color: white; margin: 15px 0 0 0"
+              >
+                12$
+              </h5>
+            </div>
+          </div>
+        </q-tab-panel>
+      </q-tab-panels>
     </div>
   </q-page>
 </template>
