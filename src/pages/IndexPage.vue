@@ -45,9 +45,53 @@
           <q-tab name="sobremesas" label="Sobremesas" />
         </q-tabs>
       </div>
-      <q-tab-panels v-model="tab" animated style="height: 100vh">
+      <q-tab-panels v-model="tab" animated>
         <q-tab-panel name="pratos">
-          <div style="margin-top: 100px; margin-bottom: 100px">
+          <section
+            style="
+              overflow-x: scroll;
+              display: inline-flex;
+              margin-top: 100px;
+              margin-bottom: 100px;
+            "
+            class=""
+          >
+            <div v-for="item in Mydb.db.data.pratos" :key="item.id">
+              <div class="cursor-pointer little-card">
+                <img
+                  :src="item.img"
+                  alt=""
+                  style="
+                    position: relative;
+                    object-fit: cover;
+                    object-fit: cover;
+                    width: 164.16px;
+                    height: 164.16px;
+                    left: 30px;
+                    top: -50px;
+                    border-radius: 100%;
+                    display: block;
+                    box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
+                  "
+                />
+
+                <h5
+                  class="text-center"
+                  style="background-color: white; margin: 0"
+                >
+                  {{ item.name }}
+                </h5>
+
+                <h5
+                  class="text-center text-deep-orange-7"
+                  style="background-color: white; margin: 15px 0 0 0"
+                >
+                  {{ item.price }} $
+                </h5>
+              </div>
+            </div>
+          </section>
+          <!-- <div style="margin-top: 100px; margin-bottom: 100px">
             <div
               class="little-card cursor-pointer"
               @click.prevent="handleOrderDetail"
@@ -81,75 +125,99 @@
                 50$
               </h5>
             </div>
-          </div>
+          </div> -->
         </q-tab-panel>
         <q-tab-panel name="bebidas">
-          <div style="margin-top: 100px; margin-bottom: 100px">
-            <div class="little-card">
-              <img
-                src="../assets/6333b7002c0260f1972f5cdcf6b85e5a-coca2L.png"
-                alt="coca2L"
-                style="
-                  position: relative;
-                  object-fit: cover;
-                  width: 164.16px;
-                  height: 164.16px;
-                  left: 30px;
-                  top: -50px;
-                  border-radius: 100%;
-                  display: block;
-                  box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
-                "
-              />
-              <h5
-                class="text-center"
-                style="background-color: white; margin: 0"
-              >
-                Cola Cola 2L
-              </h5>
+          <section
+            style="
+              overflow-x: scroll;
+              display: inline-flex;
+              margin-top: 100px;
+              margin-bottom: 100px;
+            "
+            class=""
+          >
+            <div v-for="item in Mydb.db.data.pratos" :key="item.id">
+              <div class="cursor-pointer little-card">
+                <img
+                  :src="item.img"
+                  alt=""
+                  style="
+                    position: relative;
+                    object-fit: cover;
+                    object-fit: cover;
+                    width: 164.16px;
+                    height: 164.16px;
+                    left: 30px;
+                    top: -50px;
+                    border-radius: 100%;
+                    display: block;
+                    box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
+                  "
+                />
 
-              <h5
-                class="text-center text-deep-orange-7"
-                style="background-color: white; margin: 15px 0 0 0"
-              >
-                12$
-              </h5>
+                <h5
+                  class="text-center"
+                  style="background-color: white; margin: 0"
+                >
+                  {{ item.name }}
+                </h5>
+
+                <h5
+                  class="text-center text-deep-orange-7"
+                  style="background-color: white; margin: 15px 0 0 0"
+                >
+                  {{ item.price }} $
+                </h5>
+              </div>
             </div>
-          </div>
+          </section>
         </q-tab-panel>
         <q-tab-panel name="sobremesas">
-          <div style="margin-top: 100px; margin-bottom: 100px">
-            <div class="little-card">
-              <img
-                src="../assets/4678e05dc2d35b34ba794e54338dadcc-taÃ§a.jpg"
-                alt="taça de sorvete"
-                style="
-                  position: relative;
-                  object-fit: cover;
-                  width: 164.16px;
-                  height: 164.16px;
-                  left: 30px;
-                  top: -50px;
-                  border-radius: 100%;
-                  display: block;
-                  box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
-                "
-              />
-              <h5
-                class="text-center"
-                style="background-color: white; margin: 0"
-              >
-                Taça de Sorvete
-              </h5>
+          <section
+            style="
+              overflow-x: scroll;
+              display: inline-flex;
+              margin-top: 100px;
+              margin-bottom: 100px;
+            "
+            class=""
+          >
+            <div v-for="item in Mydb.db.data.pratos" :key="item.id">
+              <div class="cursor-pointer little-card">
+                <img
+                  :src="item.img"
+                  alt=""
+                  style="
+                    position: relative;
+                    object-fit: cover;
+                    object-fit: cover;
+                    width: 164.16px;
+                    height: 164.16px;
+                    left: 30px;
+                    top: -50px;
+                    border-radius: 100%;
+                    display: block;
+                    box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
+                  "
+                />
 
-              <h5
-                class="text-center text-deep-orange-7"
-                style="background-color: white; margin: 15px 0 0 0"
-              >
-                12$
-              </h5>
+                <h5
+                  class="text-center"
+                  style="background-color: white; margin: 0"
+                >
+                  {{ item.name }}
+                </h5>
+
+                <h5
+                  class="text-center text-deep-orange-7"
+                  style="background-color: white; margin: 15px 0 0 0"
+                >
+                  {{ item.price }} $
+                </h5>
+              </div>
             </div>
-          </div>
+          </section>
         </q-tab-panel>
       </q-tab-panels>
     </div>
@@ -157,13 +225,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
-
+import db from '../../db.json';
 // CONSTS
 const text = ref(null);
 const tab = ref('pratos');
 const router = useRouter();
+const Mydb = reactive({ db });
+
 // FUNCTIONS
 
 function handleOrderDetail() {
@@ -172,17 +242,43 @@ function handleOrderDetail() {
 </script>
 
 <style scoped>
+.cards {
+  scroll-snap-type: x mandatory;
+}
+
+.card {
+  display: flex;
+
+  flex-direction: column;
+  margin: 0 10px;
+  flex: 0 0 68%;
+  padding: 17px;
+  background: var(--white);
+  border-radius: 12px;
+
+  scroll-snap-align: start;
+  transition: all 0.2s;
+}
 h4 {
   margin-top: 0;
 }
-.little-card {
-  position: absolute;
+/* .little-card {
   margin: 0 34px 56px 50px;
   width: 220px;
   height: 270px;
 
   background: #ffffff;
   box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
+  border-radius: 30px;
+} */
+
+.little-card {
+  margin: 50px 34px 56px 10px;
+  width: 220px;
+  height: 300px;
+
+  background: #ffffff;
+
   border-radius: 30px;
 }
 
