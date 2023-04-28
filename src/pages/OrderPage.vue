@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height: 100vh">
     <div class="row no-wrap justify-between" style="">
       <q-btn icon="keyboard_arrow_left" flat @click.prevent="handleBack">
       </q-btn>

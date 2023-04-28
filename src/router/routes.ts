@@ -43,9 +43,9 @@ const routes: RouteRecordRaw[] = [
   },
 
   {
-    path: '/createOrder',
-    name: 'CreateOrder',
-    component: () => import('src/pages/CreateOrder.vue'),
+    path: '/orderDetail',
+    name: 'OrderDetail',
+    component: () => import('src/pages/OrderDetail.vue'),
   },
 
   // Always leave this as last one,

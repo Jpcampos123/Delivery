@@ -48,7 +48,10 @@
       <q-tab-panels v-model="tab" animated style="height: 100vh">
         <q-tab-panel name="pratos">
           <div style="margin-top: 100px; margin-bottom: 100px">
-            <div class="little-card">
+            <div
+              class="little-card cursor-pointer"
+              @click.prevent="handleOrderDetail"
+            >
               <img
                 src="../assets/kb2kspprfktxf6xive7zbjoeujkchq0ox03jnyy6.jpeg"
                 alt=""
@@ -155,10 +158,17 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 // CONSTS
 const text = ref(null);
 const tab = ref('pratos');
+const router = useRouter();
+// FUNCTIONS
+
+function handleOrderDetail() {
+  router.push({ name: 'OrderDetail' });
+}
 </script>
 
 <style scoped>
