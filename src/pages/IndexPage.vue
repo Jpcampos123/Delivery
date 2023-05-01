@@ -2,20 +2,19 @@
   <q-page class="">
     <div>
       <div
+        class="full-width q-pt-lg"
         style="
           margin-left: 50px;
           width: 185px;
           height: 82px;
           font-family: 'Roboto';
           font-style: normal;
-          font-weight: 700;
-          font-size: 34px;
           line-height: 41px;
 
           color: #000000;
         "
       >
-        <h4>Deliciosos pratos para você</h4>
+        <h4 class="text-center text-h5">Deliciosos pratos para você.</h4>
       </div>
       <div style="margin-top: 80px">
         <q-input
