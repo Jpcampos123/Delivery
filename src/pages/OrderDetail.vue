@@ -1,10 +1,12 @@
 <template>
   <div style="height: 100vh">
-    <div class="row no-wrap justify-between" style="">
+    <div class="row no-wrap justify-between q-pt-md" style="">
       <q-btn icon="keyboard_arrow_left" flat @click.prevent="handleBack">
       </q-btn>
-      <h5>Detalhes</h5>
       <q-btn flat @click.prevent="" icon="favorite_border"></q-btn>
+    </div>
+    <div class="flex justify-center q-pt-xl">
+      <h5>Detalhes do pedido</h5>
     </div>
     <div class="full-width justify-center">
       <div class="text-center q-mt-xl">
@@ -24,7 +26,7 @@
           class="text-center text-deep-orange-7"
           style="background-color: white; margin-top: 0"
         >
-          12$
+          12,00 R$
         </h5>
       </div>
       <div class="text-left" style="margin: 0 60px">

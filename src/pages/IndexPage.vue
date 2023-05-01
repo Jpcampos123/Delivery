@@ -16,7 +16,7 @@
       >
         <h4 class="text-center text-h5">Deliciosos pratos para você.</h4>
       </div>
-      <div style="margin-top: 80px">
+      <div style="margin-top: 1.5rem">
         <q-input
           rounded
           outlined
