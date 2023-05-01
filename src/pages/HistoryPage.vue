@@ -8,7 +8,7 @@
     </div>
     <div style="text-align: center; margin-top: 20%">
       <img src="../assets/Vector.svg" alt="" />
-      <h4>Sem Pedidos Anteriores</h4>
+      <h4 class="text-h5">Sem Pedidos Anteriores</h4>
       <div style="height: 40px; text-align: center">
         <span
           style="
@@ -18,25 +18,21 @@
             font-size: 17px;
             line-height: 20px;
             text-align: center;
-
             color: #000000;
-
             opacity: 0.57;
           "
-          >Clique no botão Order para Fazer o Primeiro Pedido.</span
+          >Clique no botão "Fazer Pedido" para fazer o primeiro pedido.</span
         >
       </div>
       <q-btn
+        size="13px"
+        square
+        color="deep-orange"
         text-color="white"
         label="Fazer Pedido"
         @click.prevent="handleOrder"
         rounded
-        style="
-          width: 314px;
-          height: 70px;
-          background: #fa4a0c;
-          margin: 25% 0 20% 0;
-        "
+        style="width: 314px; height: 50px; margin: 25% 0 20% 0"
       />
     </div>
   </div>
