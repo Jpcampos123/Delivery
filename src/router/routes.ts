@@ -48,6 +48,12 @@ const routes: RouteRecordRaw[] = [
     component: () => import('src/pages/OrderDetail.vue'),
   },
 
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: () => import('src/pages/CartPage.vue'),
+  },
+
   // Always leave this as last one,
   // but you can also remove it
   {

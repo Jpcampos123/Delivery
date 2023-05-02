@@ -1,56 +1,56 @@
 {
-    "data": {
-        "pratos": [
-            {
-                "id": 1,
-                "seqno": 10,
-                "name": "Bife Acebolado",
-                "img": "https://media.gazetadopovo.com.br/bomgourmet/2019/10/bife-acebolado-f0be73b0.jpg",
-                "price": 20,
-                "serve": 1,
-                "details": null,
-                "like": false
-            },
-            {
-                "id": 2,
-                "seqno": 20,
-                "name": "Parmegiana de Frango",
-                "img": "https://www.receiteria.com.br/wp-content/uploads/file-de-frango-parmegiana.jpeg",
-                "price": 20,
-                "serve": 1,
-                "details": null,
-                "like": false
-            },
-            {
-                "id": 3,
-                "seqno": 30,
-                "name": "Pacu assado",
-                "img": "https://www.superirani.com.br/wp-content/uploads/2016/02/amp-cc46apacuassado-0005.jpg",
-                "price": 130,
-                "serve": 2,
-                "details": null,
-                "like": false
-            },
-            {
-                "id": 4,
-                "seqno": 40,
-                "name": "Costela Assada",
-                "img": "https://www.sabornamesa.com.br/media/k2/items/cache/8a7eacb7a228abdc187ecece4128652b_XL.jpg",
-                "price": 80,
-                "serve": 2,
-                "details": null,
-                "like": false
-            },
-            {
-                "id": 5,
-                "seqno": 50,
-                "name": "Macarrão",
-                "img": "https://event-kraken.s3.amazonaws.com/event/posters/61704/large.jpg?t=2023-02-03T23:21:14.959960+00:00",
-                "price": 60,
-                "serve": 2,
-                "details": null,
-                "like": false
-            }
-        ]
-    }
+  "data": {
+    "pratos": [
+      {
+        "id": 1,
+        "seqno": 10,
+        "name": "Bife Acebolado",
+        "img": "https://media.gazetadopovo.com.br/bomgourmet/2019/10/bife-acebolado-f0be73b0.jpg",
+        "price": 20,
+        "serve": 1,
+        "details": "Delicioso Bife de Contra Filé , feito na chapa com manteiga e cebola, vem acompanhado de Arroz, Salada, e farofa de torresmo.",
+        "like": false
+      },
+      {
+        "id": 2,
+        "seqno": 20,
+        "name": "Parmegiana de Frango",
+        "img": "https://www.receiteria.com.br/wp-content/uploads/file-de-frango-parmegiana.jpeg",
+        "price": 20,
+        "serve": 1,
+        "details": "Parmegiana de Frango, Feita especialmente com molho artesanal de tomate, queijo e rucula, vem acompanhado de Arroz, Legumes passados na manteiga e, Batatas Fritas",
+        "like": false
+      },
+      {
+        "id": 3,
+        "seqno": 30,
+        "name": "Pacu assado",
+        "img": "https://www.superirani.com.br/wp-content/uploads/2016/02/amp-cc46apacuassado-0005.jpg",
+        "price": 130,
+        "serve": 2,
+        "details": null,
+        "like": false
+      },
+      {
+        "id": 4,
+        "seqno": 40,
+        "name": "Costela Assada",
+        "img": "https://www.sabornamesa.com.br/media/k2/items/cache/8a7eacb7a228abdc187ecece4128652b_XL.jpg",
+        "price": 80,
+        "serve": 2,
+        "details": null,
+        "like": false
+      },
+      {
+        "id": 5,
+        "seqno": 50,
+        "name": "Macarrão",
+        "img": "https://st1.uvnimg.com/eb/a3/b02005cd4033bf784e248fd9b22f/espaguete-macarrao-bolonhesa-0822-1400x800.jpg",
+        "price": 60,
+        "serve": 2,
+        "details": null,
+        "like": false
+      }
+    ]
+  }
 }

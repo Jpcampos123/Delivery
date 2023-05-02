@@ -11,7 +11,7 @@
     <div class="full-width justify-center">
       <div class="text-center q-mt-xl">
         <img
-          src="../assets/kb2kspprfktxf6xive7zbjoeujkchq0ox03jnyy6.jpeg"
+          :src="items.img"
           alt=""
           style="
             object-fit: cover;
@@ -21,22 +21,19 @@
             box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
           "
         />
-        <h5 class="text-center" style="">Taça de Sorvete</h5>
+        <h5 class="text-center" style="">{{ items.name }}</h5>
         <h5
           class="text-center text-deep-orange-7"
           style="background-color: white; margin-top: 0"
         >
-          12,00 R$
+          {{ items.price }} R$
         </h5>
       </div>
       <div class="text-left" style="margin: 0 60px">
         <div class="q-mt-xl">
           <h6>Informações</h6>
           <div style="width: 297px; height: 77px">
-            <span
-              >Delivered between monday aug and thursday 20 from 8pm to 91:32
-              pm</span
-            >
+            <span>{{ items.details }}</span>
           </div>
         </div>
       </div>
@@ -58,9 +55,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 //CONSTS
+const route = useRoute();
+const items = <any>route.query;
 const router = useRouter();
 //FUNCTIONS
 function handleBack() {

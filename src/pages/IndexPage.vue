@@ -56,7 +56,10 @@
             class=""
           >
             <div v-for="item in Mydb.db.data.pratos" :key="item.id">
-              <div class="cursor-pointer little-card">
+              <div
+                class="cursor-pointer little-card"
+                @click.prevent="handleOrderDetail(item)"
+              >
                 <img
                   :src="item.img"
                   alt=""
@@ -235,8 +238,8 @@ const Mydb = reactive({ db });
 
 // FUNCTIONS
 
-function handleOrderDetail() {
-  router.push({ name: 'OrderDetail' });
+function handleOrderDetail(item: any) {
+  router.push({ name: 'OrderDetail', query: item });
 }
 </script>
 

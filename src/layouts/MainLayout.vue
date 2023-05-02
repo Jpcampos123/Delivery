@@ -13,7 +13,12 @@
 
         <q-toolbar-title> JJR Delivery </q-toolbar-title>
 
-        <div>Delivery</div>
+        <q-icon
+          name="shopping_cart"
+          size="22px"
+          class="cursor-pointer"
+          @click.prevent="handleCart"
+        />
       </q-toolbar>
     </q-header>
 
@@ -40,6 +45,7 @@ import { ref } from 'vue';
 import EssentialLink, {
   EssentialLinkProps,
 } from 'components/EssentialLink.vue';
+import { useRouter } from 'vue-router';
 
 const essentialLinks: EssentialLinkProps[] = [
   {
@@ -87,8 +93,13 @@ const essentialLinks: EssentialLinkProps[] = [
 ];
 
 const leftDrawerOpen = ref(false);
+const router = useRouter();
 
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
+}
+
+function handleCart() {
+  router.push({ name: 'Cart' });
 }
 </script>
