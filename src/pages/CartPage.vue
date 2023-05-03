@@ -104,7 +104,6 @@ import ModalConfirm from 'src/components/ModalConfirm.vue';
 const AddCart = useAddStoreCart();
 const router = useRouter();
 const confirm = ref(false);
-const number = ref(1);
 
 // FUNCTIONS
 

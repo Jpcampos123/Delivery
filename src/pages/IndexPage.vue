@@ -230,6 +230,7 @@
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import db from '../../db.json';
+
 // CONSTS
 const text = ref(null);
 const tab = ref('pratos');
