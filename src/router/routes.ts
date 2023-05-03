@@ -53,6 +53,11 @@ const routes: RouteRecordRaw[] = [
     name: 'Cart',
     component: () => import('src/pages/CartPage.vue'),
   },
+  {
+    path: '/delivery',
+    name: 'Delivery',
+    component: () => import('src/pages/DeliveryPage.vue'),
+  },
 
   // Always leave this as last one,
   // but you can also remove it

@@ -6,12 +6,27 @@
       indicator-color="deep-orange-7"
       active-color="deep-orange-7"
       class="text-grey"
-      style="width: 100%; margin: 0 auto; display: flex"
+      style="width: 100%; margin: 0 auto; display: flex; background: white"
     >
-      <q-tab name="home" icon="home" @click.prevent="handleMain" />
-      <q-tab name="order" icon="list_alt" @click.prevent="handleOrder" />
-      <q-tab name="profile" icon="person" @click.prevent="handleProfile" />
-      <q-tab name="history" icon="history" @click.prevent="handleHistory" />
+      <q-tab title="Home" name="home" icon="home" @click.prevent="handleMain" />
+      <q-tab
+        title="Pedidos"
+        name="order"
+        icon="list_alt"
+        @click.prevent="handleOrder"
+      />
+      <q-tab
+        title="Perfil"
+        name="profile"
+        icon="person"
+        @click.prevent="handleProfile"
+      />
+      <q-tab
+        title="History"
+        name="history"
+        icon="history"
+        @click.prevent="handleHistory"
+      />
     </q-tabs>
   </div>
 </template>
