@@ -1,8 +1,18 @@
 import { defineStore } from 'pinia';
-
+interface pratos {
+  id: number;
+  qtd: number;
+  seqno: number;
+  name: string;
+  img: string;
+  price: number;
+  serve: number;
+  details: string;
+  like: boolean;
+}
 export const useAddStoreCart = defineStore('pratos', {
   state: () => ({
-    pratos: [] as string[],
+    pratos: [] as pratos[],
   }),
   getters: {},
   actions: {
