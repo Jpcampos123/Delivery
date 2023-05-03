@@ -1,0 +1,39 @@
+<template>
+  <q-dialog
+    v-model="confirm"
+    persistent
+    transition-show="scale"
+    transition-hide="scale"
+  >
+    <q-card style="border-radius: 30px">
+      <q-card-section class="row items-center">
+        <span class="q-ml-sm">Deseja Retirar este item da sacola?</span>
+      </q-card-section>
+
+      <q-card-actions align="center">
+        <q-btn
+          flat
+          label="Não"
+          color="deep-orange-7"
+          @click.prevent="$emit('close')"
+          v-close-popup
+        />
+        <q-btn
+          rounded
+          label="Sim"
+          color="deep-orange-7"
+          v-close-popup
+          @click.prevent="$emit('accept')"
+        />
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+
+// CONSTS
+const confirm = ref(true);
+// FUNCTIONS
+</script>

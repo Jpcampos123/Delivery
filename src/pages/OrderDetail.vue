@@ -39,6 +39,7 @@
       </div>
       <div class="text-center">
         <q-btn
+          :loading="loading"
           text-color="white"
           label="Adicionar ao Carrinho"
           rounded
@@ -48,6 +49,7 @@
             background: #fa4a0c;
             margin: 25% 0 20% 0;
           "
+          @click.prevent="handleAddToCart(items)"
         />
       </div>
     </div>
@@ -56,14 +58,23 @@
 
 <script lang="ts" setup>
 import { useRoute, useRouter } from 'vue-router';
-
+import { useAddStoreCart } from 'src/stores/AddCart';
+import { ref } from 'vue';
 //CONSTS
 const route = useRoute();
+const AddCart = useAddStoreCart();
+const loading = ref(false);
 const items = <any>route.query;
 const router = useRouter();
 //FUNCTIONS
 function handleBack() {
   router.back();
+}
+
+function handleAddToCart(item: any) {
+  loading.value = true;
+  AddCart.Add(item);
+  router.push({ name: 'Cart' });
 }
 </script>
 
