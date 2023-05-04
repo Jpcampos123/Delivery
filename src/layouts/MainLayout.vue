@@ -19,6 +19,7 @@
           class="cursor-pointer"
           @click.prevent="handleCart"
         />
+        {{ AddCart.pratos.length }}
       </q-toolbar>
     </q-header>
 
@@ -46,7 +47,9 @@ import EssentialLink, {
   EssentialLinkProps,
 } from 'components/EssentialLink.vue';
 import { useRouter } from 'vue-router';
+import { useAddStoreCart } from 'src/stores/AddCart';
 
+const AddCart = useAddStoreCart();
 const essentialLinks: EssentialLinkProps[] = [
   {
     title: 'Docs',

@@ -10,6 +10,7 @@
         "price": 20,
         "serve": 1,
         "details": "Delicioso Bife de Contra Filé , feito na chapa com manteiga e cebola, vem acompanhado de Arroz, Salada, e farofa de torresmo.",
+        "situation": null,
         "like": false
       },
       {
@@ -21,6 +22,7 @@
         "price": 20,
         "serve": 1,
         "details": "Parmegiana de Frango, Feita especialmente com molho artesanal de tomate, queijo e rucula, vem acompanhado de Arroz, Legumes passados na manteiga e, Batatas Fritas",
+        "situation": null,
         "like": false
       },
       {
@@ -32,6 +34,7 @@
         "price": 130,
         "serve": 2,
         "details": null,
+        "situation": null,
         "like": false
       },
       {
@@ -43,6 +46,7 @@
         "price": 80,
         "serve": 2,
         "details": null,
+        "situation": null,
         "like": false
       },
       {
@@ -54,6 +58,7 @@
         "price": 60,
         "serve": 2,
         "details": null,
+        "situation": null,
         "like": false
       }
     ]

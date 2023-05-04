@@ -79,19 +79,7 @@
                     "
                     >{{ item.qtd }}</span
                   >
-                  <input
-                    hidden
-                    type="number"
-                    v-model="item.qtd"
-                    style="
-                      border: none;
-                      outline: 0;
-                      width: 100%;
-                      background: #fa4a0c;
-                      color: white;
-                      text-align: center;
-                    "
-                  /><q-icon
+                  <q-icon
                     color="white"
                     name="add"
                     size="22px"
@@ -178,9 +166,9 @@ const loading = ref(false);
 const confirm = ref(false);
 
 // FUNCTIONS
-onMounted(() => {
-  console.log(AddCart.pratos.length);
-});
+// onMounted(() => {
+//   console.log(AddCart.pratos.length);
+// });
 function handleBack() {
   router.back();
 }
