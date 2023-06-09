@@ -29,7 +29,7 @@
             "
           >
             <img
-              :src="item.img"
+              :src="`http://localhost:3000/${item.banner}`"
               alt=""
               style="
                 position: relative;
@@ -48,7 +48,7 @@
               <span class="block title-meal">{{ item.name }}</span>
               <div class="justify-between row no-wrap" style="width: 100%">
                 <span class="text-deep-orange-7 q-ml-md">
-                  {{ item.price }}$</span
+                  {{ item.price }} R$</span
                 >
                 <div
                   class="flex no-wrap"
@@ -154,7 +154,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAddStoreCart } from 'src/stores/AddCart';
 
@@ -164,17 +164,23 @@ const AddCart = useAddStoreCart();
 const router = useRouter();
 const loading = ref(false);
 const confirm = ref(false);
-
+const soma = ref(0);
 // FUNCTIONS
-// onMounted(() => {
+//  => {
 //   console.log(AddCart.pratos.length);
 // });
+
+// onMounted(() => {
+//   return AddCart.pratos.forEach((item) => (soma.value += item.total));
+// });
+
 function handleBack() {
   router.back();
 }
 
 function AddItem(item: any) {
   AddCart.AddItem(item);
+  AddCart.ItemQtd(item);
 }
 
 function DeleteItem(item: any) {
@@ -188,10 +194,14 @@ function RemoveItem(item: any) {
     // AddCart.deleteItem(item);
   } else {
     AddCart.RemoveItem(item);
+    AddCart.ItemQtd(item);
   }
 }
 
 function handleDelivery() {
+  AddCart.pratos.forEach((item) => (soma.value += item.total));
+  AddCart.totalItemsPrice = soma.value.toFixed(2);
+
   router.push({ name: 'Delivery' });
 }
 </script>

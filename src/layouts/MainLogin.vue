@@ -124,7 +124,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-
+import { api } from 'src/boot/axios';
+import { useQuasar } from 'quasar';
+import { UserStore } from 'src/stores/User';
 // CONSTS
 const tab = ref('login');
 const dense = ref(false);
@@ -133,11 +135,73 @@ const email = ref(null);
 const password = ref(null);
 const loading = ref(false);
 const router = useRouter();
+const $q = useQuasar();
+const user = UserStore();
+
 // FUNCTIONS
 
-function handleLogin() {
-  router.push({ name: 'Main' });
+async function handleLogin() {
+  const data = {
+    email: email.value,
+    password: password.value,
+  };
+
+  try {
+    await api
+      .post('auth/session', data)
+      .then((res) => {
+        loading.value = true;
+        user.user = res.data;
+        router.push({ name: 'Dashboard' });
+        loading.value = false;
+
+        $q.notify({
+          type: 'positive',
+          caption: 'Success',
+          message: 'Success',
+          color: 'positive',
+        });
+      })
+      .catch((err) =>
+        $q.notify({
+          type: 'negative',
+          caption: 'E-mail/Senha incorretos',
+          color: 'negative',
+        })
+      );
+  } catch (e) {
+    console.log(e);
+  }
 }
+
+//   $q.notify({
+//     type: 'positive',
+//     caption: 'Success',
+//     message: 'Success',
+//     color: 'positive',
+//   });
+
+// loading.value = true;
+// if (!session) {
+//   $q.notify({
+//     type: 'negative',
+//     caption: 'E-mail/Senha incorretos',
+//     message: 'E-mail/Senha incorretos',
+//     color: 'negative',
+//   });
+//   loading.value = false;
+// }
+
+// if (session) {
+//   router.push({ name: 'Main' });
+//   $q.notify({
+//     type: 'positive',
+//     caption: 'Success',
+//     message: 'Success',
+//     color: 'positive',
+//   });
+//   loading.value = false;
+// }
 </script>
 <style scoped>
 h4 {

@@ -55,13 +55,18 @@
             "
             class=""
           >
-            <div v-for="item in Mydb.db.data.pratos" :key="item.id">
+            <div v-for="item in MyProduct" :key="item.id">
               <div
+                v-if="
+                  item.category_id == '40df5fba-05f4-46e7-862c-f7f6fb83c21c'
+                "
                 class="cursor-pointer little-card"
                 @click.prevent="handleOrderDetail(item)"
               >
+                <!-- <img src="../../../backend-delivery/client/" alt="" />
+                `../../public/produto/${item.banner}` -->
                 <img
-                  :src="item.img"
+                  :src="`http://localhost:3000/${item.banner}`"
                   alt=""
                   style="
                     position: relative;
@@ -88,7 +93,7 @@
                   class="text-center text-deep-orange-7"
                   style="background-color: white; margin: 15px 0 0 0"
                 >
-                  {{ item.price }} $
+                  {{ item.price }} R$
                 </h5>
               </div>
             </div>
@@ -139,10 +144,16 @@
             "
             class=""
           >
-            <div v-for="item in Mydb.db.data.pratos" :key="item.id">
-              <div class="cursor-pointer little-card">
+            <div v-for="item in MyProduct" :key="item.id">
+              <div
+                class="cursor-pointer little-card"
+                v-if="
+                  item.category_id == '6cb37543-79b1-4bea-ac45-a846557f9c74'
+                "
+                @click.prevent="handleOrderDetail(item)"
+              >
                 <img
-                  :src="item.img"
+                  :src="`http://localhost:3000/${item.banner}`"
                   alt=""
                   style="
                     position: relative;
@@ -169,7 +180,7 @@
                   class="text-center text-deep-orange-7"
                   style="background-color: white; margin: 15px 0 0 0"
                 >
-                  {{ item.price }} $
+                  {{ item.price }} R$
                 </h5>
               </div>
             </div>
@@ -185,10 +196,16 @@
             "
             class=""
           >
-            <div v-for="item in Mydb.db.data.pratos" :key="item.id">
-              <div class="cursor-pointer little-card">
+            <div v-for="item in MyProduct" :key="item.id">
+              <div
+                class="cursor-pointer little-card"
+                v-if="
+                  item.category_id == 'b6f7964f-dfc7-444e-b3e1-753ef92f1e25'
+                "
+                @click.prevent="handleOrderDetail(item)"
+              >
                 <img
-                  :src="item.img"
+                  :src="`http://localhost:3000/${item.banner}`"
                   alt=""
                   style="
                     position: relative;
@@ -215,7 +232,7 @@
                   class="text-center text-deep-orange-7"
                   style="background-color: white; margin: 15px 0 0 0"
                 >
-                  {{ item.price }} $
+                  {{ item.price }} R$
                 </h5>
               </div>
             </div>
@@ -227,15 +244,33 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import db from '../../db.json';
+// import db from '../../db.json';
+import { api } from 'src/boot/axios';
+import { UserStore } from 'src/stores/User';
 
 // CONSTS
 const text = ref(null);
 const tab = ref('pratos');
 const router = useRouter();
-const Mydb = reactive({ db });
+// const Mydb = reactive({ db });
+const MyProduct = <any>ref(null);
+const store = UserStore();
+const token = <any>store.user.token;
+
+onMounted(() => {
+  return api
+    .get('/product', {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    })
+    .then((res) => {
+      MyProduct.value = res.data;
+    })
+    .catch((err) => console.log(err));
+});
 
 // FUNCTIONS
 

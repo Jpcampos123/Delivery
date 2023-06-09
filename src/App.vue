@@ -1,6 +1,10 @@
 <template>
   <router-view />
-  <div class="full-width text-center" style="position: fixed; bottom: 0">
+  <div
+    class="full-width text-center"
+    style="position: fixed; bottom: 0"
+    v-if="user.isAuth"
+  >
     <q-tabs
       v-model="tab"
       indicator-color="deep-orange-7"
@@ -34,11 +38,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-
+import { UserStore } from '../src/stores/User';
 // CONSTS
 const tab = ref('home');
 const router = useRouter();
-
+const user = UserStore();
 // FUNCTIONS
 function handleMain() {
   router.push({ name: 'Dashboard' });

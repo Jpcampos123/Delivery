@@ -48,6 +48,7 @@
             (val) => val.length >= 8 || 'Por Favor digite o CEP corretamente',
           ]"
         />
+
         <q-input
           v-model="rua"
           label="Rua"
@@ -127,7 +128,7 @@
             color: #000000;
           "
         >
-          {{ totalValue }} $
+          {{ AddCart.totalItemsPrice }} R$
         </span>
       </div>
     </div>
@@ -150,7 +151,7 @@
 
 <script lang="ts" setup>
 import axios from 'axios';
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { useQuasar } from 'quasar';
 import { useRouter } from 'vue-router';
 import { useAddStoreCart } from 'src/stores/AddCart';
@@ -165,14 +166,14 @@ const cidade = ref(null);
 const $q = useQuasar();
 const loading = ref(false);
 const disable = ref(false);
-const totalValue = ref(0);
 const router = useRouter();
 const AddCart = useAddStoreCart();
 // FUNCTIONS
 
-onMounted(() => {
-  totalValue.value = AddCart.pratos[0].price;
-});
+// onMounted(() => {
+
+// });
+
 function handleBack() {
   router.back();
 }
@@ -209,6 +210,9 @@ async function getAdress() {
 </script>
 
 <style scoped>
+.q-field__bottom {
+  padding-top: 0;
+}
 .card {
   margin: 25px auto 42px auto;
   width: 315px;

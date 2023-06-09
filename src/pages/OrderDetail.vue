@@ -11,7 +11,7 @@
     <div class="full-width justify-center">
       <div class="text-center q-mt-xl">
         <img
-          :src="items.img"
+          :src="`http://localhost:3000/${items.banner}`"
           alt=""
           style="
             object-fit: cover;
@@ -33,7 +33,7 @@
         <div class="q-mt-xl">
           <h6>Informações</h6>
           <div style="width: 297px; height: 77px">
-            <span>{{ items.details }}</span>
+            <span>{{ items.description }}</span>
           </div>
         </div>
       </div>
@@ -73,7 +73,9 @@ function handleBack() {
 
 function handleAddToCart(item: any) {
   loading.value = true;
+  item.qtd = 1;
   AddCart.Add(item);
+  AddCart.ItemQtd(item);
   router.push({ name: 'Cart' });
 }
 </script>

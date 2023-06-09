@@ -1,34 +1,41 @@
 import { defineStore } from 'pinia';
-interface pratos {
+export interface pratos {
   id: number;
   qtd: number;
   seqno: number;
   name: string;
-  img: string;
+  banner: string;
   price: number;
   serve: number;
   details: string;
   like: boolean;
+  total: number;
 }
 export const useAddStoreCart = defineStore('pratos', {
   state: () => ({
     pratos: [] as pratos[],
+    totalItemsPrice: 0 as number | string,
   }),
   getters: {},
   actions: {
-    Add(item: any) {
+    Add(item: pratos) {
       this.pratos.push(item);
     },
 
-    AddItem(item: any) {
+    AddItem(item: pratos) {
       item.qtd++;
     },
 
-    RemoveItem(item: any) {
+    ItemQtd(item: pratos) {
+      item.total = item.qtd * item.price;
+    },
+
+    RemoveItem(item: pratos) {
       item.qtd--;
     },
-    deleteItem(item: any) {
+    deleteItem(item: unknown) {
       this.pratos = this.pratos.filter((prato) => prato !== item);
     },
   },
+  persist: true,
 });
