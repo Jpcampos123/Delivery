@@ -157,6 +157,7 @@ async function handleLogin() {
 
         $q.notify({
           type: 'positive',
+
           caption: 'Success',
           message: 'Success',
           color: 'positive',

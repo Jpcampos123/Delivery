@@ -92,8 +92,10 @@ function handleBack() {
   router.back();
 }
 
-function handleLogout() {
-  localStorage.removeItem('User');
+async function handleLogout() {
+  await localStorage.removeItem('User');
+
+  store.user = {};
 
   // store.user.email = '';
   // store.user.id = '';

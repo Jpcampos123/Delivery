@@ -12,10 +12,13 @@ interface User {
 
 export const UserStore = defineStore('User', {
   state: () => ({
-    user: {} as User,
+    user: null as any | User,
+    // authUser: null,
   }),
   getters: {
     isAuth: (state) => !(Object.keys(state.user).length == 0),
+
+    // user: (state) => state.authUser,
   },
   actions: {
     async login(data: any) {
@@ -23,7 +26,8 @@ export const UserStore = defineStore('User', {
         await api
           .get('auth/session', data)
           .then((res) => {
-            res.data = this.user;
+            // res.data = this.authUser;
+            this.user = res.data;
           })
           .catch((err) => console.log(err));
       } catch (e) {
