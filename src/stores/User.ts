@@ -6,6 +6,8 @@ interface User {
   name: string;
   email: string;
   token: string;
+  phone: string;
+  photo: string;
 }
 
 export const UserStore = defineStore('User', {
@@ -28,6 +30,10 @@ export const UserStore = defineStore('User', {
         console.log(e);
       }
     },
+
+    // async logout(){
+    //   this.user = null
+    // }
   },
   persist: true,
 });

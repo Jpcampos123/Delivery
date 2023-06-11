@@ -3,7 +3,7 @@
   <div
     class="full-width text-center"
     style="position: fixed; bottom: 0"
-    v-if="user.isAuth"
+    v-if="store.isAuth"
   >
     <q-tabs
       v-model="tab"
@@ -42,7 +42,7 @@ import { UserStore } from '../src/stores/User';
 // CONSTS
 const tab = ref('home');
 const router = useRouter();
-const user = UserStore();
+const store = UserStore();
 // FUNCTIONS
 function handleMain() {
   router.push({ name: 'Dashboard' });
