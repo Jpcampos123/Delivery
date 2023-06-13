@@ -132,8 +132,9 @@
         </span>
       </div>
     </div>
+
     <div class="text-center full-width">
-      <q-btn
+      <!-- <q-btn
         :loading="loading"
         text-color="white"
         label="Completar Pedido"
@@ -144,17 +145,26 @@
           background: #fa4a0c;
           margin-bottom: 17%;
         "
-      />
+      /> -->
+      <div class="full-width text-center">
+        <div style="">
+          <ButtonPay />
+        </div>
+      </div>
     </div>
+
+    <!-- <MercadoPago /> -->
   </div>
 </template>
 
 <script lang="ts" setup>
 import axios from 'axios';
-import { ref } from 'vue';
+import MercadoPago from '../components/MercadoPago.vue';
+import { onMounted, ref } from 'vue';
 import { useQuasar } from 'quasar';
 import { useRouter } from 'vue-router';
 import { useAddStoreCart } from 'src/stores/AddCart';
+import ButtonPay from 'src/components/ButtonPay.vue';
 
 // CONSTS
 const delivery = ref('line');
@@ -170,11 +180,11 @@ const router = useRouter();
 const AddCart = useAddStoreCart();
 // FUNCTIONS
 
-// onMounted(() => {
+//   onMounted(() => {
 
 // });
 
-function handleBack() {
+async function handleBack() {
   router.back();
 }
 async function getAdress() {

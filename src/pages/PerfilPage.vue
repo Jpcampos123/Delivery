@@ -77,16 +77,22 @@
 </template>
 
 <script setup lang="ts">
+import ButtonPay from '../components/ButtonPay.vue';
 import PopupLogout from '../components/PopupLogout.vue';
 import { UserStore } from 'src/stores/User';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 // CONSTS
+
 const router = useRouter();
 const confirm = ref(false);
 const store = UserStore();
 // FUNCTIONS
+
+// onMounted(() => {
+//   console.log(tabs.value);
+// });
 
 function handleBack() {
   router.back();
@@ -105,6 +111,7 @@ async function handleLogout() {
   // store.user.token = '';
 
   router.push({ name: 'Login' });
+  location.reload();
 }
 </script>
 

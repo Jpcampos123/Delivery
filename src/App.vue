@@ -1,64 +1,36 @@
 <template>
   <router-view />
-  <div
-    class="full-width text-center"
-    style="position: fixed; bottom: 0"
-    v-if="store.isAuth"
-  >
-    <q-tabs
-      v-model="tab"
-      indicator-color="deep-orange-7"
-      active-color="deep-orange-7"
-      class="text-grey"
-      style="width: 100%; margin: 0 auto; display: flex; background: white"
-    >
-      <q-tab title="Home" name="home" icon="home" @click.prevent="handleMain" />
-      <q-tab
-        title="Pedidos"
-        name="order"
-        icon="list_alt"
-        @click.prevent="handleOrder"
-      />
-      <q-tab
-        title="Perfil"
-        name="profile"
-        icon="person"
-        @click.prevent="handleProfile"
-      />
-      <q-tab
-        title="History"
-        name="history"
-        icon="history"
-        @click.prevent="handleHistory"
-      />
-    </q-tabs>
-  </div>
+  <TabsNav />
 </template>
 
 <script setup lang="ts">
+import TabsNav from './components/TabsNav.vue';
+
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { UserStore } from '../src/stores/User';
-// CONSTS
-const tab = ref('home');
-const router = useRouter();
-const store = UserStore();
-// FUNCTIONS
-function handleMain() {
-  router.push({ name: 'Dashboard' });
-}
+// import { useRouter } from 'vue-router';
+// import { UserStore } from '../src/stores/User';
+// // CONSTS
+const tabs = ref('home');
+// const router = useRouter();
+// const store = UserStore();
+// // FUNCTIONS
+// function handleMain() {
+//   router.push({ name: 'Dashboard' });
+// }
 
-function handleOrder() {
-  router.push({ name: 'Order' });
-}
+// function handleOrder() {
+//   router.push({ name: 'Order' });
+// }
 
-function handleProfile() {
-  router.push({ name: 'Perfil' });
-}
+// function handleProfile() {
+//   router.push({ name: 'Perfil' });
+// }
 
-function handleHistory() {
-  router.push({ name: 'History' });
-}
+// function handleHistory() {
+//   router.push({ name: 'History' });
+// }
+//
 </script>
 
+//
 <style></style>

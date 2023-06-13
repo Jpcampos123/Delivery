@@ -29,7 +29,7 @@
             "
           >
             <img
-              :src="`http://localhost:3000/${item.banner}`"
+              :src="` http://192.168.18.28:3000/${item.banner}`"
               alt=""
               style="
                 position: relative;

@@ -45,14 +45,22 @@
         />
 
         <q-input
+          :type="isPwd ? 'password' : 'text'"
           v-model="password"
-          type="password"
           label="Password"
           color="deep-orange-7"
           stack-label
           :dense="dense"
           class="input-q"
-        />
+        >
+          <template v-slot:append>
+            <q-icon
+              :name="isPwd ? 'visibility_off' : 'visibility'"
+              class="cursor-pointer"
+              @click="isPwd = !isPwd"
+            />
+          </template>
+        </q-input>
 
         <div
           class="text-deep-orange-7 text-left q-mt-md"
@@ -62,6 +70,7 @@
         </div>
         <div style="margin-top: 130px">
           <q-btn
+            :loading="loading"
             text-color="white"
             label="Login"
             @click.prevent="handleLogin"
@@ -100,7 +109,8 @@
           stack-label
           :dense="dense"
           class="input-q"
-        />
+        >
+        </q-input>
 
         <div
           class="text-deep-orange-7 text-left q-mt-md"
@@ -111,6 +121,7 @@
         </div>
         <div style="margin-top: 30px">
           <q-btn
+            :loading="loading"
             text-color="white"
             label="Registrar"
             rounded
@@ -127,8 +138,10 @@ import { useRouter } from 'vue-router';
 import { api } from 'src/boot/axios';
 import { useQuasar } from 'quasar';
 import { UserStore } from 'src/stores/User';
+
 // CONSTS
 const tab = ref('login');
+const isPwd = ref(true);
 const dense = ref(false);
 const name = ref(null);
 const email = ref(null);
@@ -141,6 +154,8 @@ const user = UserStore();
 // FUNCTIONS
 
 async function handleLogin() {
+  loading.value = true;
+
   const data = {
     email: email.value,
     password: password.value,
@@ -150,28 +165,31 @@ async function handleLogin() {
     await api
       .post('auth/session', data)
       .then((res) => {
-        loading.value = true;
         user.user = res.data;
+
         router.push({ name: 'Dashboard' });
+
         loading.value = false;
 
         $q.notify({
           type: 'positive',
 
           caption: 'Success',
-          message: 'Success',
+          message: 'Login Feito com  Sucesso',
           color: 'positive',
         });
       })
-      .catch((err) =>
+      .catch((err) => {
+        loading.value = false;
         $q.notify({
           type: 'negative',
           caption: 'E-mail/Senha incorretos',
           color: 'negative',
-        })
-      );
+        });
+      });
   } catch (e) {
     console.log(e);
+    loading.value = false;
   }
 }
 

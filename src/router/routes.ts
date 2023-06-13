@@ -64,10 +64,23 @@ const routes: RouteRecordRaw[] = [
     beforeEnter: requireAuth,
   },
 
+  // {
+  //   path: '/mercadopago',
+  //   name: 'Mercadopago',
+  //   component: () => import('src/components/MercadoPago.vue'),
+  //   beforeEnter: requireAuth,
+  // },
+
   {
     path: '/cart',
     name: 'Cart',
     component: () => import('src/pages/CartPage.vue'),
+    beforeEnter: requireAuth,
+  },
+  {
+    path: '/delivery',
+    name: 'Delivery',
+    component: () => import('src/pages/DeliveryPage.vue'),
     beforeEnter: requireAuth,
   },
 
