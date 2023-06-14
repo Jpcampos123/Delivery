@@ -146,11 +146,8 @@
           margin-bottom: 17%;
         "
       /> -->
-      <div class="full-width text-center">
-        <div style="">
-          <ButtonPay />
-        </div>
-      </div>
+
+      <ButtonPay :preferenceId="route.hash" />
     </div>
 
     <!-- <MercadoPago /> -->
@@ -162,7 +159,7 @@ import axios from 'axios';
 import MercadoPago from '../components/MercadoPago.vue';
 import { onMounted, ref } from 'vue';
 import { useQuasar } from 'quasar';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useAddStoreCart } from 'src/stores/AddCart';
 import ButtonPay from 'src/components/ButtonPay.vue';
 
@@ -177,12 +174,17 @@ const $q = useQuasar();
 const loading = ref(false);
 const disable = ref(false);
 const router = useRouter();
+const route = useRoute();
 const AddCart = useAddStoreCart();
 // FUNCTIONS
 
-//   onMounted(() => {
+onMounted(() => {
+  return console.log(route.hash);
+});
 
-// });
+// async function handlePayment() {
+//   console.log(AddCart);
+// }
 
 async function handleBack() {
   router.back();

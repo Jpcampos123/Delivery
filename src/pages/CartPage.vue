@@ -154,25 +154,29 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import ButtonPay from '../components/ButtonPay.vue';
+import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAddStoreCart } from 'src/stores/AddCart';
-
 import ModalConfirm from 'src/components/ModalConfirm.vue';
+import { api } from 'src/boot/axios';
+import axios from 'axios';
+
 // CONSTS
 const AddCart = useAddStoreCart();
 const router = useRouter();
 const loading = ref(false);
 const confirm = ref(false);
+const preferenceId = ref('');
 const soma = ref(0);
 // FUNCTIONS
 //  => {
 //   console.log(AddCart.pratos.length);
 // });
 
-// onMounted(() => {
-//   return AddCart.pratos.forEach((item) => (soma.value += item.total));
-// });
+onMounted(() => {
+  return console.log(Number(AddCart.pratos[0].price));
+});
 
 function handleBack() {
   router.back();
@@ -198,11 +202,45 @@ function RemoveItem(item: any) {
   }
 }
 
-function handleDelivery() {
+async function handleDelivery() {
   AddCart.pratos.forEach((item) => (soma.value += item.total));
   AddCart.totalItemsPrice = soma.value.toFixed(2);
 
-  router.push({ name: 'Delivery' });
+  // const data = [{
+  //   title: AddCart.pratos[0].name,
+  //   unit_price: Number(AddCart.pratos[0].price),
+  //   quantity: AddCart.pratos[0].qtd,
+  // }];
+
+  const data = <any>[];
+
+  AddCart.pratos.forEach((item) =>
+    data.push({
+      title: item.name,
+      unit_price: Number(item.price),
+      quantity: item.qtd,
+    })
+  );
+  console.log(data);
+
+  // AddCart.pratos.forEach((item) => {
+
+  // item.name,
+  // item.price,
+  // item.qtd,
+
+  // })
+
+  await api
+    .post('/create_preference', data)
+    .then((res) => {
+      console.log(res.data);
+
+      router.push({ name: 'Delivery', hash: res.data.id });
+    })
+    .catch((e) => {
+      console.log(e);
+    });
 }
 </script>
 

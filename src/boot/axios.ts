@@ -17,7 +17,7 @@ const api = axios.create({
   baseURL: 'http://192.168.18.28:3000',
   headers: {
     Accept: 'application/json',
-    Cotent: 'application/json',
+    Content: 'application/json',
     'Access-Control-Allow-Origin': '*',
   },
 });

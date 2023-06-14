@@ -232,7 +232,7 @@
                   class="text-center text-deep-orange-7"
                   style="background-color: white; margin: 15px 0 0 0"
                 >
-                  {{ item.price }} R$
+                  {{ Number(item.price) }} R$
                 </h5>
               </div>
             </div>
@@ -268,6 +268,8 @@ onMounted(() => {
     })
     .then((res) => {
       MyProduct.value = res.data;
+
+      console.log(MyProduct.value);
     })
     .catch((err) => console.log(err));
 });

@@ -1,13 +1,19 @@
 <template>
-  <div style="width: 20%; margin-left: 80%" id="wallet_container"></div>
+  <div style="margin-bottom: 10%" id="wallet_container"></div>
 </template>
 
 <script setup>
-const mp = new MercadoPago('TEST-e015aa09-448a-4b01-9e61-a151177efa80');
+const props = defineProps({
+  preferenceId: String,
+});
+const mp = new MercadoPago('TEST-e015aa09-448a-4b01-9e61-a151177efa80', {
+  locale: 'pt-BR',
+});
 
 mp.bricks().create('wallet', 'wallet_container', {
   initialization: {
-    preferenceId: '262243059-c9bdb2ca-bbe6-41dd-879c-1e4a1b6b83a1',
+    preferenceId: props.preferenceId,
+    redirectMode: 'modal',
   },
 });
 </script>
