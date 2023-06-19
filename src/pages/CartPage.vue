@@ -174,9 +174,9 @@ const soma = ref(0);
 //   console.log(AddCart.pratos.length);
 // });
 
-onMounted(() => {
-  return console.log(Number(AddCart.pratos[0].price));
-});
+// onMounted(() => {
+//   return console.log(Number(AddCart.pratos[0].price));
+// });
 
 function handleBack() {
   router.back();
@@ -221,7 +221,6 @@ async function handleDelivery() {
       quantity: item.qtd,
     })
   );
-  console.log(data);
 
   // AddCart.pratos.forEach((item) => {
 
@@ -234,8 +233,6 @@ async function handleDelivery() {
   await api
     .post('/create_preference', data)
     .then((res) => {
-      console.log(res.data);
-
       router.push({ name: 'Delivery', hash: res.data.id });
     })
     .catch((e) => {

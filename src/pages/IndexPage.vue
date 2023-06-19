@@ -268,8 +268,6 @@ onMounted(() => {
     })
     .then((res) => {
       MyProduct.value = res.data;
-
-      console.log(MyProduct.value);
     })
     .catch((err) => console.log(err));
 });

@@ -1,16 +1,18 @@
 <template>
   <router-view />
-  <TabsNav />
+  <TabsNav v-if="route.name !== 'Delivery'" />
 </template>
 
 <script setup lang="ts">
+import { useRoute } from 'vue-router';
 import TabsNav from './components/TabsNav.vue';
 
-import { ref } from 'vue';
 // import { useRouter } from 'vue-router';
 // import { UserStore } from '../src/stores/User';
 // // CONSTS
-const tabs = ref('home');
+
+const route = useRoute();
+
 // const router = useRouter();
 // const store = UserStore();
 // // FUNCTIONS

@@ -178,10 +178,6 @@ const route = useRoute();
 const AddCart = useAddStoreCart();
 // FUNCTIONS
 
-onMounted(() => {
-  return console.log(route.hash);
-});
-
 // async function handlePayment() {
 //   console.log(AddCart);
 // }
