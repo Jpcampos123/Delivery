@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-bottom: 10%" id="wallet_container"></div>
+  <div id="wallet_container"></div>
 </template>
 
 <script setup>

@@ -161,6 +161,8 @@ import { useAddStoreCart } from 'src/stores/AddCart';
 import ModalConfirm from 'src/components/ModalConfirm.vue';
 import { api } from 'src/boot/axios';
 import axios from 'axios';
+import { UserStore } from 'src/stores/User';
+import { useQuasar } from 'quasar';
 
 // CONSTS
 const AddCart = useAddStoreCart();
@@ -169,6 +171,8 @@ const loading = ref(false);
 const confirm = ref(false);
 const preferenceId = ref('');
 const soma = ref(0);
+const store = UserStore();
+const $q = useQuasar();
 // FUNCTIONS
 //  => {
 //   console.log(AddCart.pratos.length);
@@ -212,23 +216,33 @@ async function handleDelivery() {
   //   quantity: AddCart.pratos[0].qtd,
   // }];
 
-  const data = <any>[];
+  const data = <any>{
+    items: [],
+    payer: {
+      name: store.user.name,
+      email: store.user.email,
+      phone: {
+        area_code: '55',
+        number: store.user.number,
+      },
+    },
+    // notification_url: 'http://localhost:9000/#/paysuccess',
+    back_urls: {
+      success: 'http://localhost:9000/#/paysuccess',
+      failure: 'http://localhost:9000/#/payFailure',
+      pending: 'http://localhost:9000/#/payPending',
+    },
+
+    auto_return: 'approved',
+  };
 
   AddCart.pratos.forEach((item) =>
-    data.push({
+    data.items.push({
       title: item.name,
       unit_price: Number(item.price),
       quantity: item.qtd,
     })
   );
-
-  // AddCart.pratos.forEach((item) => {
-
-  // item.name,
-  // item.price,
-  // item.qtd,
-
-  // })
 
   await api
     .post('/create_preference', data)
@@ -236,9 +250,45 @@ async function handleDelivery() {
       router.push({ name: 'Delivery', hash: res.data.id });
     })
     .catch((e) => {
-      console.log(e);
+      $q.notify({
+        type: 'negative',
+        caption: 'Algo deu Errado',
+        color: 'negative',
+      });
     });
 }
+
+// AddCart.pratos.forEach((item) =>
+//   data.push({
+//     items: [
+//       {
+//         title: item.name,
+//         unit_price: Number(item.price),
+//         quantity: item.qtd,
+//       },
+//     ],
+// title: item.name,
+// unit_price: Number(item.price),
+// quantity: item.qtd,
+//   })
+// );
+
+// AddCart.pratos.forEach((item) => {
+
+// item.name,
+// item.price,
+// item.qtd,
+
+// })
+
+// await api
+//   .post('/create_preference', data)
+//   .then((res) => {
+//     router.push({ name: 'Delivery', hash: res.data.id });
+//   })
+//   .catch((e) => {
+//     console.log(e);
+//   });
 </script>
 
 <style scoped>
