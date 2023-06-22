@@ -78,23 +78,9 @@ const routes: RouteRecordRaw[] = [
     beforeEnter: requireAuth,
   },
   {
-    path: '/paySuccess',
-    name: 'PaySuccess',
-    component: () => import('src/pages/PayPageSuccess.vue'),
-    beforeEnter: requireAuth,
-  },
-
-  {
-    path: '/payPending',
-    name: 'PayPending',
-    component: () => import('src/pages/PayPagePending.vue'),
-    beforeEnter: requireAuth,
-  },
-
-  {
-    path: '/payFailure',
-    name: 'PayFailure',
-    component: () => import('src/pages/PayPageFailure.vue'),
+    path: '/payPage',
+    name: 'payPage',
+    component: () => import('src/pages/PayPage.vue'),
     beforeEnter: requireAuth,
   },
 

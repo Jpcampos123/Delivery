@@ -228,9 +228,9 @@ async function handleDelivery() {
     },
     // notification_url: 'http://localhost:9000/#/paysuccess',
     back_urls: {
-      success: 'http://localhost:9000/#/paysuccess',
-      failure: 'http://localhost:9000/#/payFailure',
-      pending: 'http://localhost:9000/#/payPending',
+      success: 'http://localhost:9000/#/payPage',
+      failure: 'http://localhost:9000/#/payPage',
+      pending: 'http://localhost:9000/#/payPage',
     },
 
     auto_return: 'approved',
