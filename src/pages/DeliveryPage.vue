@@ -162,6 +162,8 @@ import { useQuasar } from 'quasar';
 import { useRoute, useRouter } from 'vue-router';
 import { useAddStoreCart } from 'src/stores/AddCart';
 import ButtonPay from 'src/components/ButtonPay.vue';
+import { api } from 'src/boot/axios';
+import { UserStore } from 'src/stores/User';
 
 // CONSTS
 const delivery = ref('line');
@@ -176,6 +178,7 @@ const disable = ref(false);
 const router = useRouter();
 const route = useRoute();
 const AddCart = useAddStoreCart();
+const store = UserStore();
 // FUNCTIONS
 
 // async function handlePayment() {

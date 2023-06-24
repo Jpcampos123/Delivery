@@ -1,5 +1,6 @@
 import { boot } from 'quasar/wrappers';
 import axios, { AxiosInstance } from 'axios';
+import { UserStore } from 'src/stores/User';
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
@@ -13,13 +14,14 @@ declare module '@vue/runtime-core' {
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const authToken =
-  'TEST-6201173609883364-112115-27ddfb7c2931c859bed9d4c1d05ed265-262243059';
+// const authToken =
+//   'TEST-6201173609883364-112115-27ddfb7c2931c859bed9d4c1d05ed265-262243059';
+
 const api = axios.create({
   baseURL: 'http://192.168.18.28:3000',
   headers: {
     Accept: 'application/json',
-    Authorization: `Bearer ${authToken}`,
+    // Authorization: `Bearer ${store.user.token}`,
     Content: 'application/json',
     'Access-Control-Allow-Origin': '*',
   },

@@ -154,7 +154,6 @@
 </template>
 
 <script lang="ts" setup>
-import ButtonPay from '../components/ButtonPay.vue';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAddStoreCart } from 'src/stores/AddCart';
@@ -173,14 +172,62 @@ const preferenceId = ref('');
 const soma = ref(0);
 const store = UserStore();
 const $q = useQuasar();
+const Order = ref('');
+const token = <any>store.user.token;
 // FUNCTIONS
 //  => {
 //   console.log(AddCart.pratos.length);
 // });
 
-// onMounted(() => {
-//   return console.log(Number(AddCart.pratos[0].price));
-// });
+// onMounted(() => {});
+
+async function newOrder() {
+  await api
+    .post('/order', {
+      Headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      Order.value = res.data.id;
+      console.log(Order.value);
+    })
+    .catch((err) => console.log(err));
+}
+
+async function AddItems() {
+  const data = <any>[];
+
+  AddCart.pratos.forEach((item) =>
+    data.push({
+      order_id: Order.value,
+      product_id: item.id,
+      amount: item.qtd,
+    })
+  );
+  // console.log(data);
+  await api
+    .post('/items', data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => console.log(err));
+  // await api
+  //   .post('/items', {
+  //     data,
+  //     Headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   })
+  //   .then((res) => {
+  //     console.log(res.data);
+  //   })
+  //   .catch((err) => console.log(err));
+}
 
 function handleBack() {
   router.back();
@@ -207,6 +254,9 @@ function RemoveItem(item: any) {
 }
 
 async function handleDelivery() {
+  $q.loading.show();
+  await newOrder();
+  await AddItems();
   AddCart.pratos.forEach((item) => (soma.value += item.total));
   AddCart.totalItemsPrice = soma.value.toFixed(2);
 
@@ -256,6 +306,7 @@ async function handleDelivery() {
         color: 'negative',
       });
     });
+  $q.loading.hide();
 }
 
 // AddCart.pratos.forEach((item) =>
