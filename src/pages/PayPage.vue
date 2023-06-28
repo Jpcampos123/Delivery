@@ -179,6 +179,11 @@ async function findItems() {
   }
 }
 
+// async function getPayment() {
+
+//   await
+// }
+
 function callApiWithDelay(timeout: number) {
   setTimeout(() => {
     apiMercado();

@@ -284,6 +284,7 @@ async function handleDelivery() {
     },
 
     auto_return: 'approved',
+    product_id: Order.value,
   };
 
   AddCart.pratos.forEach((item) =>
