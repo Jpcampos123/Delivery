@@ -18,7 +18,7 @@ declare module '@vue/runtime-core' {
 //   'TEST-6201173609883364-112115-27ddfb7c2931c859bed9d4c1d05ed265-262243059';
 
 const api = axios.create({
-  baseURL: 'http://192.168.18.28:3000',
+  baseURL: 'http://localhost:3000',
   headers: {
     Accept: 'application/json',
     // Authorization: `Bearer ${store.user.token}`,

@@ -11,7 +11,7 @@
     <div class="full-width justify-center">
       <div class="text-center q-mt-xl">
         <img
-          :src="` http://192.168.18.28:3000/${items.banner}`"
+          :src="`http://localhost:3000/${items.banner}`"
           alt=""
           style="
             object-fit: cover;

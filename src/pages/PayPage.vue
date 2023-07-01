@@ -41,14 +41,19 @@ import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
 import { useQuasar } from 'quasar';
 import { api } from 'src/boot/axios';
+import { useAddStoreCart } from 'src/stores/AddCart';
+import { UserStore } from 'src/stores/User';
 
 //CONSTS
 const $q = useQuasar();
-const dataPrerence = ref();
+const dataPrerence = ref('');
 const count = ref(false);
 const route = useRoute();
 const router = useRouter();
+const store = UserStore();
 const items = ref();
+const AddCart = useAddStoreCart();
+const token = <any>store.user.token;
 // const authToken =
 //   'TEST-6201173609883364-112115-27ddfb7c2931c859bed9d4c1d05ed265-262243059';
 // FUNCTIONS
@@ -69,21 +74,33 @@ onMounted(() => {
   callApiWithDelay(120000);
 });
 
+async function payDatabase(pay: any) {
+  const data = {
+    id: pay.collector_id,
+    status_payment: pay.status,
+    name_payer: pay.payer.first_name,
+    payment_method: pay.payment_method.type,
+    total_paid_amount: pay.transaction_amount,
+    item_id: AddCart.PaymentId,
+  };
+
+  await api
+    .post('database-payments', data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => console.log(data))
+    .catch((e) => console.log(data));
+}
+
 async function apiMercado() {
   if (!count.value) {
     const id = route.query.collection_id;
 
-    // await axios
-    //   .get(`https://api.mercadopago.com/v1/payments/${id}`, {
-    //     headers: {
-    //       Authorization: `Bearer ${authToken}`,
-    //     },
-    //   })
     await api
       .get(`/payment-mercado-pago/${id}`)
       .then((response) => {
-        dataPrerence.value = response.data;
-        // console.log(dataPrerence.value);
         if (response.data.status == 'approved') {
           $q.notify({
             type: 'positive',
@@ -91,6 +108,7 @@ async function apiMercado() {
             color: 'positive',
           });
           count.value = true;
+          payDatabase(response.data);
           // console.log(count.value);
         }
 
@@ -100,6 +118,8 @@ async function apiMercado() {
             caption: 'Pagamento Pendente',
             color: 'warning',
           });
+          console.log(response.data);
+          payDatabase(response.data);
         }
         if (response.data.status == 'authorized') {
           $q.notify({
@@ -107,6 +127,7 @@ async function apiMercado() {
             caption: 'Pagamento Aprovado, mas não Débitado ainda',
             color: 'positive',
           });
+          payDatabase(response.data);
         }
 
         if (response.data.status == 'in_process') {
@@ -115,6 +136,7 @@ async function apiMercado() {
             caption: 'Pagamento em analise',
             color: 'warning',
           });
+          payDatabase(response.data);
         }
 
         if (response.data.status == 'in_mediation') {
@@ -123,6 +145,7 @@ async function apiMercado() {
             caption: 'The user started a dispute',
             color: 'warning',
           });
+          payDatabase(response.data);
         }
 
         if (response.data.status == 'rejected') {
@@ -131,6 +154,7 @@ async function apiMercado() {
             caption: 'Pagamento Rejeitado',
             color: 'negative',
           });
+          payDatabase(response.data);
         }
 
         if (response.data.status == 'cancelled') {
@@ -139,6 +163,7 @@ async function apiMercado() {
             caption: 'Pagamento Cancelado',
             color: 'negative',
           });
+          payDatabase(response.data);
         }
 
         if (response.data.status == 'refunded') {
@@ -147,6 +172,7 @@ async function apiMercado() {
             caption: 'Pagamento Cancelado',
             color: 'negative',
           });
+          payDatabase(response.data);
         }
 
         if (response.data.status == 'charged_back') {
@@ -155,6 +181,7 @@ async function apiMercado() {
             caption: 'Estornado ao usuário',
             color: 'negative',
           });
+          payDatabase(response.data);
         }
 
         //
@@ -172,7 +199,6 @@ async function findItems() {
     await api
       .get(`/listpreference/${id}`)
       .then((response) => {
-        // console.log(response.data.items);
         items.value = response.data.items;
       })
       .catch((e) => console.log(e));

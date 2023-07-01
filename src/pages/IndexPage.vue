@@ -58,7 +58,7 @@
             <div v-for="item in MyProduct" :key="item.id">
               <div
                 v-if="
-                  item.category_id == '40df5fba-05f4-46e7-862c-f7f6fb83c21c'
+                  item.category_id == '61e1128b-d63c-4b70-bda4-3152a9c11527'
                 "
                 class="cursor-pointer little-card"
                 @click.prevent="handleOrderDetail(item)"
@@ -66,7 +66,7 @@
                 <!-- <img src="../../../backend-delivery/client/" alt="" />
                 `../../public/produto/${item.banner}` -->
                 <img
-                  :src="`http://192.168.18.28:3000/${item.banner}`"
+                  :src="`http://localhost:3000/${item.banner}`"
                   alt=""
                   style="
                     position: relative;
@@ -148,12 +148,12 @@
               <div
                 class="cursor-pointer little-card"
                 v-if="
-                  item.category_id == '6cb37543-79b1-4bea-ac45-a846557f9c74'
+                  item.category_id == 'b2f0a9fb-f38a-404f-9b80-ff5ff9df30a4'
                 "
                 @click.prevent="handleOrderDetail(item)"
               >
                 <img
-                  :src="`http://192.168.18.28:3000/${item.banner}`"
+                  :src="`http://localhost:3000/${item.banner}`"
                   alt=""
                   style="
                     position: relative;
@@ -200,12 +200,12 @@
               <div
                 class="cursor-pointer little-card"
                 v-if="
-                  item.category_id == 'b6f7964f-dfc7-444e-b3e1-753ef92f1e25'
+                  item.category_id == 'b157cba3-abb2-4459-bb9c-59367aa7e996'
                 "
                 @click.prevent="handleOrderDetail(item)"
               >
                 <img
-                  :src="` http://192.168.18.28:3000/${item.banner}`"
+                  :src="`http://localhost:3000/${item.banner}`"
                   alt=""
                   style="
                     position: relative;

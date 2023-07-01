@@ -154,7 +154,7 @@ const user = UserStore();
 // FUNCTIONS
 
 async function handleLogin() {
-  loading.value = true;
+  $q.loading.show();
 
   const data = {
     email: email.value,
@@ -163,13 +163,14 @@ async function handleLogin() {
 
   try {
     await api
-      .post('auth/session', data)
+      .post('/auth/session', data)
+
       .then((res) => {
         user.user = res.data;
 
         router.push({ name: 'Dashboard' });
 
-        loading.value = false;
+        $q.loading.hide();
 
         $q.notify({
           type: 'positive',

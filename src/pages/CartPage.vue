@@ -29,7 +29,7 @@
             "
           >
             <img
-              :src="` http://192.168.18.28:3000/${item.banner}`"
+              :src="`http://localhost:3000/${item.banner}`"
               alt=""
               style="
                 position: relative;
@@ -190,6 +190,7 @@ async function newOrder() {
     })
     .then((res) => {
       Order.value = res.data.id;
+      AddCart.PaymentId = Order.value;
       console.log(Order.value);
     })
     .catch((err) => console.log(err));
@@ -213,7 +214,7 @@ async function AddItems() {
       },
     })
     .then((res) => {
-      console.log(res.data);
+      console.log(res);
     })
     .catch((err) => console.log(err));
   // await api

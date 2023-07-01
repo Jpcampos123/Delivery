@@ -15,6 +15,7 @@ export const useAddStoreCart = defineStore('pratos', {
   state: () => ({
     pratos: [] as pratos[],
     totalItemsPrice: 0 as number | string,
+    PaymentId: '' as string,
   }),
   getters: {},
   actions: {
@@ -33,7 +34,7 @@ export const useAddStoreCart = defineStore('pratos', {
     RemoveItem(item: pratos) {
       item.qtd--;
     },
-    deleteItem(item: unknown) {
+    deleteItem(item: pratos) {
       this.pratos = this.pratos.filter((prato) => prato !== item);
     },
   },

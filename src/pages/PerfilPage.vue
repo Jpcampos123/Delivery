@@ -82,12 +82,14 @@ import PopupLogout from '../components/PopupLogout.vue';
 import { UserStore } from 'src/stores/User';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useQuasar } from 'quasar';
 
 // CONSTS
 
 const router = useRouter();
 const confirm = ref(false);
 const store = UserStore();
+const $q = useQuasar();
 // FUNCTIONS
 
 // onMounted(() => {
@@ -99,6 +101,7 @@ function handleBack() {
 }
 
 async function handleLogout() {
+  $q.loading.show();
   await localStorage.removeItem('User');
 
   store.user = {};
@@ -111,6 +114,7 @@ async function handleLogout() {
   // store.user.token = '';
 
   router.push({ name: 'Login' });
+  $q.loading.hide();
   location.reload();
 }
 </script>
