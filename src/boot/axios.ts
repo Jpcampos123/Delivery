@@ -18,11 +18,12 @@ declare module '@vue/runtime-core' {
 //   'TEST-6201173609883364-112115-27ddfb7c2931c859bed9d4c1d05ed265-262243059';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://backend-delivery-n6o6recbv-jpcamposgda.vercel.app',
   headers: {
     Accept: 'application/json',
     // Authorization: `Bearer ${store.user.token}`,
     Content: 'application/json',
+    'Content-Type': 'application/x-www-form-urlencoded',
     'Access-Control-Allow-Origin': '*',
   },
 });

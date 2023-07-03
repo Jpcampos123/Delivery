@@ -138,6 +138,7 @@ import { useRouter } from 'vue-router';
 import { api } from 'src/boot/axios';
 import { useQuasar } from 'quasar';
 import { UserStore } from 'src/stores/User';
+import axios from 'axios';
 
 // CONSTS
 const tab = ref('login');
@@ -161,6 +162,20 @@ async function handleLogin() {
     password: password.value,
   };
 
+  // await axios
+  //   .post(
+  //     'https://backend-delivery-n6o6recbv-jpcamposgda.vercel.app/auth/session',
+  //     data,
+  //     {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Access-Control-Allow-Origin': '*',
+  //       },
+  //     }
+  //   )
+  //   .then((res) => console.log(res))
+  //   .catch((err) => console.log(err));
+
   try {
     await api
       .post('/auth/session', data)
@@ -181,6 +196,7 @@ async function handleLogin() {
         });
       })
       .catch((err) => {
+        console.log(err);
         loading.value = false;
         $q.notify({
           type: 'negative',
