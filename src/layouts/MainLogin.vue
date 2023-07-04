@@ -196,7 +196,6 @@ async function handleLogin() {
         });
       })
       .catch((err) => {
-        console.log(err);
         loading.value = false;
         $q.notify({
           type: 'negative',
