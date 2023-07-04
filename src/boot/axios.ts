@@ -17,15 +17,10 @@ declare module '@vue/runtime-core' {
 // const authToken =
 //   'TEST-6201173609883364-112115-27ddfb7c2931c859bed9d4c1d05ed265-262243059';
 
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 const api = axios.create({
-  baseURL: 'https://backend-delivery-n6o6recbv-jpcamposgda.vercel.app',
-  headers: {
-    Accept: 'application/json',
-    // Authorization: `Bearer ${store.user.token}`,
-    Content: 'application/json',
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'Access-Control-Allow-Origin': '*',
-  },
+  baseURL: 'https://backend-delivery-4gtip9w3v-jpcampos123.vercel.app',
+  headers: {},
 });
 
 axios.interceptors.response.use(
