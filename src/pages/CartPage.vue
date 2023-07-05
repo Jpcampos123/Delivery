@@ -29,7 +29,7 @@
             "
           >
             <img
-              :src="`http://localhost:3000/${item.banner}`"
+              :src="`https://backend-delivery-ruby.vercel.app/${item.banner}`"
               alt=""
               style="
                 position: relative;

@@ -11,7 +11,7 @@
     <div class="full-width justify-center">
       <div class="text-center q-mt-xl">
         <img
-          :src="`http://localhost:3000/${items.banner}`"
+          :src="`https://backend-delivery-ruby.vercel.app/${items.banner}`"
           alt=""
           style="
             object-fit: cover;
