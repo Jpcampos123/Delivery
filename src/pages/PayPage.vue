@@ -65,6 +65,8 @@ function handleBack() {
 onMounted(() => {
   callApiWithDelay(0);
 
+
+
   findItems();
 
   callApiWithDelay(10000);
@@ -81,8 +83,10 @@ async function payDatabase(pay: any) {
     name_payer: pay.payer.first_name,
     payment_method: pay.payment_method.type,
     total_paid_amount: pay.transaction_amount,
-    item_id: AddCart.PaymentId,
+    order_id: AddCart.PaymentId,
   };
+
+  console.log(data);
 
   await api
     .post('database-payments', data, {

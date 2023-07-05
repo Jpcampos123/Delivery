@@ -33,6 +33,7 @@
     class="text-center"
   >
     <!-- LOGIN -->
+
     <q-tab-panel name="login">
       <div>
         <q-input
@@ -80,38 +81,57 @@
         </div>
       </div>
     </q-tab-panel>
-
+    >
     <!-- REGISTRAR -->
+
     <q-tab-panel name="register">
       <div>
-        <q-input
-          v-model="name"
-          label="Name"
-          color="deep-orange-7"
-          stack-label
-          :dense="dense"
-          class="input-q"
-        />
-        <q-input
-          v-model="email"
-          label="Email"
-          color="deep-orange-7"
-          stack-label
-          :dense="dense"
-          class="input-q"
-        />
+        <q-form @submit="handleRegister" class="q-gutter-md">
+          <q-input
+            v-model="name"
+            label="Name"
+            color="deep-orange-7"
+            stack-label
+            :dense="dense"
+            class="input-q"
+          />
+          <q-input
+            v-model="email"
+            label="Email"
+            color="deep-orange-7"
+            stack-label
+            :dense="dense"
+            class="input-q"
+          />
 
-        <q-input
-          v-model="password"
-          type="password"
-          label="Password"
-          color="deep-orange-7"
-          stack-label
-          :dense="dense"
-          class="input-q"
-        >
-        </q-input>
+          <q-input
+            :type="isPwd ? 'password' : 'text'"
+            v-model="password"
+            label="Password"
+            color="deep-orange-7"
+            stack-label
+            :dense="dense"
+            class="input-q"
+          >
+            <template v-slot:append>
+              <q-icon
+                :name="isPwd ? 'visibility_off' : 'visibility'"
+                class="cursor-pointer"
+                @click="isPwd = !isPwd"
+              />
+            </template>
+          </q-input>
 
+          <q-input
+            stack-label
+            v-model="phone"
+            label="Phone"
+            color="deep-orange-7"
+            mask="(##) ##### - ####"
+            :dense="dense"
+            class="input-q"
+          />
+        </q-form>
         <div
           class="text-deep-orange-7 text-left q-mt-md"
           style="width: 314px; margin: 34px auto 0 auto; cursor: pointer"
@@ -121,6 +141,7 @@
         </div>
         <div style="margin-top: 30px">
           <q-btn
+            @click.prevent="handleRegister"
             :loading="loading"
             text-color="white"
             label="Registrar"
@@ -138,7 +159,6 @@ import { useRouter } from 'vue-router';
 import { api } from 'src/boot/axios';
 import { useQuasar } from 'quasar';
 import { UserStore } from 'src/stores/User';
-import axios from 'axios';
 
 // CONSTS
 const tab = ref('login');
@@ -146,6 +166,7 @@ const isPwd = ref(true);
 const dense = ref(false);
 const name = ref(null);
 const email = ref(null);
+const phone = <any> ref(null);
 const password = ref(null);
 const loading = ref(false);
 const router = useRouter();
@@ -178,10 +199,10 @@ async function handleLogin() {
 
   try {
     await api
-      .post('/auth/session', data,{
-        headers:{
-          Accept: 'application/json'
-        }
+      .post('/auth/session', data, {
+        headers: {
+          Accept: 'application/json',
+        },
       })
 
       .then((res) => {
@@ -210,6 +231,49 @@ async function handleLogin() {
   } catch (e) {
     console.log(e);
     loading.value = false;
+  }
+}
+
+async function handleRegister() {
+  $q.loading.show();
+
+  const data = {
+    name: name.value,
+    email: email.value,
+    password: password.value,
+    phone: phone.value.replace(/[^0-9]/g, ''),
+  };
+
+  try {
+    await api
+      .post('/auth', data, {
+        headers: {
+          Accept: 'application/json',
+        },
+      })
+      .then((res) => {
+        $q.loading.hide();
+        $q.notify({
+          type: 'positive',
+
+          caption: 'Success',
+          message: 'Conta criada com  sucesso',
+          color: 'positive',
+        });
+        tab.value = 'login';
+      })
+      .catch((e) => {
+        $q.loading.hide();
+
+        $q.notify({
+          type: 'negative',
+          caption: 'E-mail/Senha incorretos',
+          color: 'negative',
+        });
+      });
+  } catch (e) {
+    $q.loading.hide();
+    console.log(e);
   }
 }
 

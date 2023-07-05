@@ -279,9 +279,9 @@ async function handleDelivery() {
     },
     // notification_url: 'http://localhost:9000/#/paysuccess',
     back_urls: {
-      success: 'http://localhost:9000/#/payPage',
-      failure: 'http://localhost:9000/#/payPage',
-      pending: 'http://localhost:9000/#/payPage',
+      success: 'https://jjr-delivery.vercel.app/#/payPage',
+      failure: 'https://jjr-delivery.vercel.app/#/payPage',
+      pending: 'https://jjr-delivery.vercel.app/#/payPage',
     },
 
     auto_return: 'approved',
