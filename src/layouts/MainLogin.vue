@@ -178,7 +178,11 @@ async function handleLogin() {
 
   try {
     await api
-      .post('/auth/session', data)
+      .post('/auth/session', data,{
+        headers:{
+          Accept: 'application/json'
+        }
+      })
 
       .then((res) => {
         user.user = res.data;
