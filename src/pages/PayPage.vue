@@ -78,7 +78,7 @@ onMounted(() => {
 
 async function payDatabase(pay: any) {
   const data = {
-    id: pay.collector_id,
+    id: route.query.collection_id,
     status_payment: pay.status,
     name_payer: pay.payer.first_name,
     payment_method: pay.payment_method.type,
