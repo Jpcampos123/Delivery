@@ -25,6 +25,21 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
+
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: () => import('layouts/AdminLayout.vue'),
+    beforeEnter: requireAuth,
+    children: [
+      {
+        path: '/admindash',
+        name: 'AdminDash',
+        component: () => import('pages/AdminPage.vue'),
+        beforeEnter: requireAuth,
+      },
+    ],
+  },
   {
     path: '/login',
     name: 'Login',

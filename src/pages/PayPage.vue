@@ -78,9 +78,9 @@ onMounted(() => {
 
 async function payDatabase(pay: any) {
   const data = {
-    id: route.query.collection_id,
+    id: Number(route.query.collection_id),
     status_payment: pay.status,
-    name_payer: pay.payer.first_name,
+    name_payer: store.user.name,
     payment_method: pay.payment_method.type,
     total_paid_amount: pay.transaction_amount,
     order_id: AddCart.PaymentId,

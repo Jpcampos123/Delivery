@@ -1,6 +1,6 @@
 <template>
   <router-view />
-  <TabsNav v-if="route.name !== 'Delivery'" />
+  <TabsNav v-if="route.name !== 'Delivery' && route.name !== 'Admin' && route.name !== 'AdminDash' " />
 </template>
 
 <script setup lang="ts">
