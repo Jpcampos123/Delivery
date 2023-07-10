@@ -12,7 +12,7 @@ const props = defineProps({
 // });
 
 // dev
-const mp = new MercadoPago('TEST-e015aa09-448a-4b01-9e61-a151177efa80', {
+const mp = new MercadoPago('APP_USR-f1d023e3-359b-4f80-bb8e-924a8d528bdb', {
   locale: 'pt-BR',
 });
 

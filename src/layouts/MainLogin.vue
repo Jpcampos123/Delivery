@@ -104,14 +104,25 @@
             class="input-q"
           />
 
+
+          <div class="input-q">
+
+
           <q-input
             :type="isPwd ? 'password' : 'text'"
             v-model="password"
             label="Password"
+            lazy-rules
+
+            :rules="[
+              (val) => val.length > 1 || 'Por favor digite uma senha que contenha mais de 3 letras',
+              (value) => (value && /[A-Z]{1}/.test(value)) || 'Por favor digite uma letra maiúscula',
+              (value) => (value && /[^A-Za-z0-9]/.test(value)) || 'Por favor digite um caractere especial',
+            ]"
             color="deep-orange-7"
             stack-label
             :dense="dense"
-            class="input-q"
+
           >
             <template v-slot:append>
               <q-icon
@@ -121,6 +132,8 @@
               />
             </template>
           </q-input>
+        </div>
+
 
           <q-input
             stack-label
@@ -166,7 +179,7 @@ const isPwd = ref(true);
 const dense = ref(false);
 const name = ref(null);
 const email = ref(null);
-const phone = <any> ref(null);
+const phone = <any>ref(null);
 const password = ref(null);
 const loading = ref(false);
 const router = useRouter();
@@ -174,6 +187,9 @@ const $q = useQuasar();
 const user = UserStore();
 
 // FUNCTIONS
+
+
+
 
 async function handleLogin() {
   $q.loading.show();
