@@ -1,3 +1,3 @@
 <template>
-  dawdwad
+  Produtos
 </template>

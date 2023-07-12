@@ -1,11 +1,23 @@
 <template>
   <router-view />
-  <TabsNav v-if="route.name !== 'Delivery' && route.name !== 'Admin' && route.name !== 'AdminDash' " />
+  <TabsNav
+    v-if="
+      route.name !== 'Delivery' &&
+      route.name !== 'Admin' &&
+      route.name !== 'Categorias' &&
+      route.name !== 'Produtos' &&
+      route.name !== 'Pedidos' &&
+      route.name !== 'Pagamentos'
+
+    "
+  />
 </template>
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
 import TabsNav from './components/TabsNav.vue';
+
+const routes = {};
 
 // import { useRouter } from 'vue-router';
 // import { UserStore } from '../src/stores/User';
@@ -35,4 +47,7 @@ const route = useRoute();
 </script>
 
 //
-<style></style>
+<style>
+
+
+</style>

@@ -33,9 +33,30 @@ const routes: RouteRecordRaw[] = [
     beforeEnter: requireAuth,
     children: [
       {
-        path: '/admindash',
-        name: 'AdminDash',
-        component: () => import('pages/AdminPage.vue'),
+        path: '/admin/categorias',
+        name: 'Categorias',
+        component: () => import('pages/CategoriaPage.vue'),
+        beforeEnter: requireAuth,
+      },
+
+      {
+        path: '/admin/produtos',
+        name: 'Produtos',
+        component: () => import('pages/ProdutoPage.vue'),
+        beforeEnter: requireAuth,
+      },
+
+      {
+        path: '/admin/pedidos',
+        name: 'Pedidos',
+        component: () => import('pages/PedidosPage.vue'),
+        beforeEnter: requireAuth,
+      },
+
+      {
+        path: '/admin/pagamentos',
+        name: 'Pagamentos',
+        component: () => import('pages/PagamentosPage.vue'),
         beforeEnter: requireAuth,
       },
     ],
