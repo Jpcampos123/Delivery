@@ -30,19 +30,26 @@
 
       <q-card-actions align="right" class="text-primary">
         <q-btn
-        color="green"
+          color="green"
           flat
           label="Cancel"
           @click.prevent="$emit('close')"
           v-close-popup
         />
-        <q-btn flat label="Confirmar" color="green" v-close-popup />
+        <q-btn
+          flat
+          label="Confirmar"
+          color="green"
+          v-close-popup
+          @click.prevent="handleCategoryEdit"
+        />
       </q-card-actions>
     </q-card>
   </q-dialog>
 </template>
 
 <script lang="ts" setup>
+import { useQuasar } from 'quasar';
 import { api } from 'src/boot/axios';
 import { UserStore } from 'src/stores/User';
 import { onMounted, ref } from 'vue';
@@ -52,27 +59,54 @@ const categoria = ref('');
 const confirm = ref(true);
 const store = UserStore();
 const token = <any>store.user.token;
+const $q = useQuasar();
+
+interface Modal {
+  id: string | undefined;
+}
 // FUNCTIONS
-const props = defineProps({
-  modal: {
-      type: String as () => string | undefined,
-      default: undefined,
-    },
-});
+const props = defineProps<{
+  modal: Modal;
+}>();
 
-// onMounted(()=>{
-//   return console.log(props.modal)
-// })
+const emit = defineEmits(['get', 'close']);
 
-async function handleCategoryEdit(){
+// onMounted(() => {
+//   return console.log(props.modal.id);
+// });
 
-  const data = categoria.value;
+async function handleCategoryEdit() {
+  $q.loading.show();
 
+  const data = {
+    name: categoria.value,
+  };
 
-  api.patch('/category', data, {
-    headers:{
-      Authorization: `Bearer ${token}`,
-    }
-  } )
+  await api
+    .patch(`/category/${props.modal.id}`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      emit('get');
+      emit('close');
+      $q.notify({
+        type: 'positive',
+
+        caption: 'Success',
+        message: 'Alterado com  Sucesso',
+        color: 'positive',
+      });
+      $q.loading.hide();
+    })
+    .catch((err) => {
+      $q.notify({
+        type: 'negative',
+        message: 'Algo deu Errado',
+        color: 'negative',
+      });
+      $q.loading.hide();
+    });
 }
 </script>

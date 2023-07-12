@@ -56,7 +56,12 @@
       </div>
     </div>
   </div>
-  <CategoryModalEdit v-if="confirm" @close="confirm = false" :modal="modal" />
+  <CategoryModalEdit
+    v-if="confirm"
+    @close="confirm = false"
+    :modal="modal"
+    @get="getCategorias"
+  />
 </template>
 
 <script setup lang="ts">
@@ -97,11 +102,12 @@ async function getCategorias() {
     });
 }
 
-function handleEditModal(category: any) {
+function handleEditModal(category: string) {
   $q.loading.show();
   confirm.value = true;
   $q.loading.hide();
   modal.value = category;
+  // console.log(confirm.value);
 }
 </script>
 

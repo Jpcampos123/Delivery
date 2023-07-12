@@ -1,7 +1,9 @@
 import { boot } from 'quasar/wrappers';
 import axios, { AxiosInstance } from 'axios';
 import { UserStore } from 'src/stores/User';
-
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import App from '../../src/App.vue';
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     $axios: AxiosInstance;
@@ -18,12 +20,11 @@ declare module '@vue/runtime-core' {
 //   'TEST-6201173609883364-112115-27ddfb7c2931c859bed9d4c1d05ed265-262243059';
 
 const api = axios.create({
-
   baseURL: 'https://backend-delivery-ruby.vercel.app/',
   headers: {
     'Content-Type': 'application/json',
     Content: 'application/json',
-    Accept: 'application/json'
+    Accept: 'application/json',
   },
 });
 
