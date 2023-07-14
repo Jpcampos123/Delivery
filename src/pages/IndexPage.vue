@@ -244,7 +244,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeMount } from 'vue';
 import { useRouter } from 'vue-router';
 // import db from '../../db.json';
 import { api } from 'src/boot/axios';
@@ -259,7 +259,7 @@ const MyProduct = <any>ref(null);
 const store = UserStore();
 const token = <any>store.user.token;
 
-onMounted(() => {
+onBeforeMount(() => {
   return api
     .get('/product', {
       headers: {
@@ -271,6 +271,8 @@ onMounted(() => {
     })
     .catch((err) => console.log(err));
 });
+
+// onMounted(() => {});
 
 // FUNCTIONS
 

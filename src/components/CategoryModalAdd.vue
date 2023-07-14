@@ -1,6 +1,6 @@
 <template>
   <q-dialog
-    v-model="confirm"
+    v-model="confirmAdd"
     persistent
     transition-show="scale"
     transition-hide="scale"
@@ -14,7 +14,7 @@
       "
     >
       <q-card-section>
-        <div class="text-h6 text-white">Editar categoria</div>
+        <div class="text-h6 text-white">Adicionar categoria</div>
       </q-card-section>
 
       <q-card-section class="q-pt-none">
@@ -24,7 +24,7 @@
           dense
           v-model="categoria"
           autofocus
-          @keyup.enter="confirm = false"
+          @keyup.enter="confirmAdd = false"
         />
       </q-card-section>
 
@@ -56,18 +56,18 @@ import { onMounted, ref } from 'vue';
 
 // CONSTS
 const categoria = ref('');
-const confirm = ref(true);
+const confirmAdd = ref(true);
 const store = UserStore();
 const token = <any>store.user.token;
 const $q = useQuasar();
 
-interface Modal {
-  id: string | undefined;
-}
+// interface Modal {
+//   id: string | undefined;
+// }
 // FUNCTIONS
-const props = defineProps<{
-  modal: Modal;
-}>();
+// const props = defineProps<{
+//   modal: Modal;
+// }>();
 
 const emit = defineEmits(['get', 'close']);
 
@@ -83,7 +83,7 @@ async function handleCategoryEdit() {
   };
 
   await api
-    .patch(`/category/${props.modal.id}`, data, {
+    .post('/category', data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -95,16 +95,15 @@ async function handleCategoryEdit() {
         type: 'positive',
 
         caption: 'Success',
-        message: 'Alterado com  Sucesso',
+        message: 'Adicionado com  Sucesso',
         color: 'positive',
       });
       $q.loading.hide();
     })
     .catch((err) => {
-      console.log(err.response.data.message[0]);
       $q.notify({
         type: 'negative',
-        message: err.response.data.message[0],
+        message: 'Algo deu Errado',
         color: 'negative',
       });
       $q.loading.hide();

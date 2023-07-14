@@ -17,7 +17,13 @@
         >
           Categorias
         </h3>
-        <q-icon name="add" color="green" size="30px" class="cursor-pointer" />
+        <q-icon
+          name="add"
+          color="green"
+          size="30px"
+          class="cursor-pointer"
+          @click.prevent="handleAdd"
+        />
       </div>
       <div>
         <q-list
@@ -62,17 +68,24 @@
     :modal="modal"
     @get="getCategorias"
   />
+  <CategoryModalAdd
+    v-if="confirmAdd"
+    @close="confirmAdd = false"
+    @get="getCategorias"
+  />
 </template>
 
 <script setup lang="ts">
 import { useQuasar } from 'quasar';
 import { api } from 'src/boot/axios';
+import CategoryModalAdd from 'src/components/CategoryModalAdd.vue';
 import CategoryModalEdit from 'src/components/CategoryModalEdit.vue';
 import { UserStore } from 'src/stores/User';
-import { onMounted, ref } from 'vue';
+import { onBeforeMount, onMounted, ref } from 'vue';
 
 // CONST
 const confirm = ref(false);
+const confirmAdd = ref(false);
 const categories = <any>ref(null);
 const store = UserStore();
 const token = <any>store.user.token;
@@ -81,9 +94,19 @@ const modal = <any>ref(null);
 
 // FUNCTIONS
 
-onMounted(() => {
+onBeforeMount(() => {
   return getCategorias();
 });
+
+// onMounted(() => {
+
+// });
+
+function handleAdd() {
+  $q.loading.show();
+  confirmAdd.value = true;
+  $q.loading.hide();
+}
 async function getCategorias() {
   $q.loading.show();
   await api

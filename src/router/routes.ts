@@ -27,7 +27,7 @@ const routes: RouteRecordRaw[] = [
   },
 
   {
-    path: '/admin',
+    path: '/admin/categorias',
     name: 'Admin',
     component: () => import('layouts/AdminLayout.vue'),
     beforeEnter: requireAuth,
