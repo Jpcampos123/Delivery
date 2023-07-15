@@ -11,11 +11,9 @@
     <div class="row no-wrap justify-between q-mx-xl">
       <span
         style="
-          font-family: 'Roboto';
           font-style: normal;
           font-weight: 600;
           font-size: 17px;
-          line-height: 20px;
 
           color: #000000;
         "
@@ -26,7 +24,6 @@
           font-style: normal;
           font-weight: 400;
           font-size: 15px;
-          line-height: 18px;
 
           /* identical to box height */
           cursor: pointer;
@@ -37,7 +34,7 @@
       >
     </div>
     <div class="card">
-      <div class="text-left q-mx-lg q-gutter-xs">
+      <div class="q-pt-md q-mx-md">
         <q-input
           v-model.lazy="cep"
           label=" CEP"
@@ -78,11 +75,9 @@
     <div class="q-mx-xl">
       <span
         style="
-          font-family: 'Roboto';
           font-style: normal;
           font-weight: 600;
           font-size: 17px;
-          line-height: 20px;
 
           color: #000000;
         "
@@ -108,22 +103,18 @@
       <div class="row no-wrap justify-between full-width">
         <span
           style="
-            font-family: 'Roboto';
             font-style: normal;
             font-weight: 400;
             font-size: 17px;
-            line-height: 20px;
 
             color: #000000;
           "
           >Total</span
         ><span
           style="
-            font-family: 'Roboto';
             font-style: normal;
             font-weight: 600;
             font-size: 22px;
-            line-height: 26px;
 
             color: #000000;
           "
@@ -221,9 +212,6 @@ async function getAdress() {
 </script>
 
 <style scoped>
-.q-field__bottom {
-  padding-top: 0;
-}
 .card {
   margin: 25px auto 42px auto;
   width: 315px;

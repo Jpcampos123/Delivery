@@ -37,7 +37,7 @@
           dense
           v-model="name"
           autofocus
-          label="Name"
+          label="Nome do Produto"
           label-color="white"
           @keyup.enter="confirmAdd = false"
           style="margin-bottom: 10px"
@@ -49,7 +49,7 @@
           dense
           v-model="price"
           autofocus
-          label="Price"
+          label="Preço do Produto"
           label-color="white"
           @keyup.enter="confirmAdd = false"
           style="margin-bottom: 10px"
@@ -86,7 +86,7 @@
         <q-btn
           color="green"
           flat
-          label="Cancel"
+          label="Cancelar"
           @click.prevent="$emit('close')"
           v-close-popup
         />

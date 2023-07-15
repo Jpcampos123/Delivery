@@ -11,7 +11,7 @@
       </q-card-section>
 
       <q-card-actions align="center">
-        <q-btn
+        <q-btna
           flat
           label="Não"
           color="deep-orange-7"
@@ -19,6 +19,7 @@
           v-close-popup
         />
         <q-btn
+          square
           rounded
           label="Sim"
           color="deep-orange-7"

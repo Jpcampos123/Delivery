@@ -134,11 +134,9 @@
                 width: 220px;
                 height: 40px;
 
-                font-family: 'Roboto';
                 font-style: normal;
                 font-weight: 400;
                 font-size: 17px;
-                line-height: 20px;
                 text-align: center;
 
                 color: #000000;
@@ -362,11 +360,9 @@ async function handleDelivery() {
 .title-meal {
   margin-left: 16px;
   margin-bottom: 11px;
-  font-family: 'Roboto';
   font-style: normal;
   font-weight: 600;
   font-size: 17px;
-  line-height: 20px;
 
   color: #000000;
 }

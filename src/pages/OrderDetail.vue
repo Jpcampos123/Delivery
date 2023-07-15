@@ -31,7 +31,7 @@
       </div>
       <div class="text-left" style="margin: 0 60px">
         <div class="q-mt-xl">
-          <h6>Informações</h6>
+          <h6>Informações;</h6>
           <div style="width: 297px; height: 77px">
             <span>{{ items.description }}</span>
           </div>
@@ -87,14 +87,11 @@ h5 {
 }
 
 span {
-  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
-  line-height: 138.84%;
 
   /* or 21px */
-  letter-spacing: 0.02em;
 
   color: #000000;
 
