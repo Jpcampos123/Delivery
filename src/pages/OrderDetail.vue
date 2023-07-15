@@ -39,16 +39,14 @@
       </div>
       <div class="text-center">
         <q-btn
+          square
+          color="deep-orange"
+          size="13px"
           :loading="loading"
           text-color="white"
           label="Adicionar ao Carrinho"
           rounded
-          style="
-            width: 314px;
-            height: 70px;
-            background: #fa4a0c;
-            margin: 25% 0 20% 0;
-          "
+          style="width: 314px; height: 50px; margin: 25% 0 20% 0"
           @click.prevent="handleAddToCart(items)"
         />
       </div>

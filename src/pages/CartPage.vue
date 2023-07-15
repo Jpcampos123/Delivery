@@ -53,11 +53,11 @@
                 <div
                   class="flex no-wrap"
                   style="
-                    width: 70px;
+                    width: 75px;
                     height: 25px;
                     margin-right: 20px;
                     background: #fa4a0c;
-                    border-radius: 30px;
+                    border-radius: 7px;
                   "
                 >
                   <q-icon
@@ -107,13 +107,15 @@
           "
         >
           <q-btn
+            square
+            color="deep-orange"
             v-if="AddCart.pratos.length"
             @click.prevent="handleDelivery"
             :loading="loading"
             text-color="white"
             label="Completar Pedido"
             rounded
-            style="width: 314px; height: 70px; background: #fa4a0c"
+            style="width: 314px; height: 50px; margin: 25% 0 20% 0"
           />
         </div>
         <div
