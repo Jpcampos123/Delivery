@@ -32,7 +32,7 @@
         <q-btn
           color="green"
           flat
-          label="Cancel"
+          label="Cancelar"
           @click.prevent="$emit('close')"
           v-close-popup
         />

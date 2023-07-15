@@ -12,6 +12,7 @@
 
       <q-card-actions align="center">
         <q-btn
+          square
           flat
           label="Não"
           color="deep-orange-7"
@@ -19,6 +20,8 @@
           v-close-popup
         />
         <q-btn
+          size="13px"
+          square
           rounded
           label="Sim"
           color="deep-orange-7"

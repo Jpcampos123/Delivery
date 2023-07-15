@@ -8,7 +8,6 @@
           width: 185px;
           height: 82px;
           font-style: normal;
-          line-height: 41px;
 
           color: #000000;
         "

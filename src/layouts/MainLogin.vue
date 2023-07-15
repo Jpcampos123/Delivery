@@ -38,7 +38,7 @@
       <div>
         <q-input
           v-model="email"
-          label="Email"
+          label="E-mail"
           color="deep-orange-7"
           stack-label
           :dense="dense"
@@ -48,7 +48,7 @@
         <q-input
           :type="isPwd ? 'password' : 'text'"
           v-model="password"
-          label="Password"
+          label="Senha"
           color="deep-orange-7"
           stack-label
           :dense="dense"
@@ -71,12 +71,14 @@
         </div>
         <div style="margin-top: 130px">
           <q-btn
+            color="deep-orange"
+            square
             :loading="loading"
             text-color="white"
-            label="Login"
+            label="Entrar"
             @click.prevent="handleLogin"
             rounded
-            style="width: 314px; height: 70px; background: #fa4a0c"
+            style="width: 314px; height: 50px"
           />
         </div>
       </div>
@@ -89,7 +91,7 @@
         <q-form @submit="handleRegister" class="q-gutter-md">
           <q-input
             v-model="name"
-            label="Name"
+            label="Nome"
             color="deep-orange-7"
             stack-label
             :dense="dense"
@@ -97,48 +99,48 @@
           />
           <q-input
             v-model="email"
-            label="Email"
+            label="E-mail"
             color="deep-orange-7"
             stack-label
             :dense="dense"
             class="input-q"
           />
 
-
           <div class="input-q">
-
-
-          <q-input
-            :type="isPwd ? 'password' : 'text'"
-            v-model="password"
-            label="Password"
-            lazy-rules
-
-            :rules="[
-              (val) => val.length > 1 || 'Por favor digite uma senha que contenha mais de 3 letras',
-              (value) => (value && /[A-Z]{1}/.test(value)) || 'Por favor digite uma letra maiúscula',
-              (value) => (value && /[^A-Za-z0-9]/.test(value)) || 'Por favor digite um caractere especial',
-            ]"
-            color="deep-orange-7"
-            stack-label
-            :dense="dense"
-
-          >
-            <template v-slot:append>
-              <q-icon
-                :name="isPwd ? 'visibility_off' : 'visibility'"
-                class="cursor-pointer"
-                @click="isPwd = !isPwd"
-              />
-            </template>
-          </q-input>
-        </div>
-
+            <q-input
+              :type="isPwd ? 'password' : 'text'"
+              v-model="password"
+              label="Senha"
+              lazy-rules
+              :rules="[
+                (val) =>
+                  val.length > 1 ||
+                  'Por favor digite uma senha que contenha mais de 3 letras',
+                (value) =>
+                  (value && /[A-Z]{1}/.test(value)) ||
+                  'Por favor digite uma letra maiúscula',
+                (value) =>
+                  (value && /[^A-Za-z0-9]/.test(value)) ||
+                  'Por favor digite um caractere especial',
+              ]"
+              color="deep-orange-7"
+              stack-label
+              :dense="dense"
+            >
+              <template v-slot:append>
+                <q-icon
+                  :name="isPwd ? 'visibility_off' : 'visibility'"
+                  class="cursor-pointer"
+                  @click="isPwd = !isPwd"
+                />
+              </template>
+            </q-input>
+          </div>
 
           <q-input
             stack-label
             v-model="phone"
-            label="Phone"
+            label="Celular/Telefone"
             color="deep-orange-7"
             mask="(##) ##### - ####"
             :dense="dense"
@@ -154,12 +156,14 @@
         </div>
         <div style="margin-top: 30px">
           <q-btn
+            color="deep-orange"
+            square
             @click.prevent="handleRegister"
             :loading="loading"
             text-color="white"
             label="Registrar"
             rounded
-            style="width: 314px; height: 70px; background: #fa4a0c"
+            style="width: 314px; height: 50px"
           />
         </div>
       </div>
@@ -187,9 +191,6 @@ const $q = useQuasar();
 const user = UserStore();
 
 // FUNCTIONS
-
-
-
 
 async function handleLogin() {
   $q.loading.show();
@@ -332,11 +333,9 @@ h4 {
   width: 314px;
   height: 59px;
   margin: 0 auto 46px auto;
-  font-family: 'Roboto';
   font-style: normal;
   font-weight: 600;
   font-size: 15px;
-  line-height: 18px;
 
   /* identical to box height */
 
@@ -346,9 +345,21 @@ h4 {
   height: 400px;
   left: 0px;
   top: -15px;
-
+  height: 630px;
   background: #ffffff;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.06);
   border-radius: 30px;
+}
+
+@media screen and (max-width: 767px) {
+  .cozinha {
+    height: 400px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 900px) {
+  .cozinha {
+    height: 475px;
+  }
 }
 </style>
