@@ -1,15 +1,17 @@
 <template>
   <div style="height: 100vh">
-    <div class="row no-wrap justify-between" style="">
+    <div class="q-pt-md">
       <q-btn icon="keyboard_arrow_left" flat @click.prevent="handleBack">
       </q-btn>
-      <h5 style="margin-right: 10%">Pedidos</h5>
+    </div>
+    <div class="flex justify-center" style="">
+      <h5>Pedidos</h5>
       <div></div>
     </div>
-    <div style="text-align: center; margin-top: 20%">
+    <div class="q-pt-xl" style="text-align: center">
       <img src="../assets/carrinho.svg" alt="carrinho" />
       <h4 class="text-h5">Sem Pedidos Ainda</h4>
-      <div style="height: 40px; text-align: center">
+      <div style="text-align: center">
         <span
           style="
             width: 220px;
@@ -19,26 +21,27 @@
             font-style: normal;
             font-weight: 400;
             font-size: 17px;
-            line-height: 20px;
             text-align: center;
 
             color: #000000;
 
             opacity: 0.57;
           "
-          >Clique no botão "Fazer Pedido" para fazer o primeiro pedido</span
+          >Clique no botão "Fazer Pedido" para fazer o primeiro pedido.</span
         >
       </div>
-      <q-btn
-        size="13px"
-        square
-        color="deep-orange"
-        text-color="white"
-        label="Fazer Pedido"
-        @click.prevent="handleOrder"
-        rounded
-        style="width: 314px; height: 50px; margin: 25% 0 20% 0"
-      />
+      <div class="q-pt-xl">
+        <q-btn
+          size="13px"
+          square
+          color="deep-orange"
+          text-color="white"
+          label="Fazer Pedido"
+          @click.prevent="handleOrder"
+          rounded
+          style="width: 314px; height: 50px; margin: 25% 0 20% 0"
+        />
+      </div>
     </div>
   </div>
 </template>

@@ -1,32 +1,33 @@
 <template>
   <div style="height: 100vh">
-    <div class="row no-wrap justify-between" style="">
+    <div class="q-pt-md">
       <q-btn icon="keyboard_arrow_left" flat @click.prevent="handleBack">
       </q-btn>
-      <h5 style="margin-right: 10%">Perfil</h5>
+    </div>
+    <div class="flex justify-center" style="">
+      <h5>Detalhes do Perfil</h5>
       <div></div>
     </div>
     <div class="text-center">
-      <h5 style="margin-bottom: 4%">Detalhes do Perfil</h5>
       <div
         style="
-          width: 315px;
+          width: 330px;
           height: 197px;
           left: 42px;
           top: 241px;
           margin: 0 auto;
           background: #ffffff;
           box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.03);
-          border-radius: 20px;
+          border-radius: 10px;
         "
       >
         <q-icon
+          class="q-pt-sm"
           style="background: white"
           name="account_circle"
           size="90px"
           color="deep-orange-7"
         ></q-icon>
-
         <span v-if="store" class="card">{{ store.user.name }}</span>
         <span v-if="store" class="card1">{{ store.user.email }}</span>
         <span v-if="store" class="card1">+55{{ store.user.phone }}</span>
@@ -46,20 +47,17 @@
         height: 60px;
         background: #ffffff;
         box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.03);
-        border-radius: 20px;
+        border-radius: 10px;
       "
     >
       <span
         class="text-center"
         style="
           background: #ffffff;
-          font-family: 'SF Pro Text';
           margin: 0 auto;
           font-style: normal;
           font-weight: 600;
           font-size: 18px;
-          line-height: 21px;
-
           color: #000000;
         "
       >
@@ -126,11 +124,9 @@ async function handleLogout() {
 .card {
   background: #ffffff;
   display: block;
-  font-family: 'SF Pro Text';
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
-  line-height: 21px;
 
   color: #000000;
 }
@@ -138,11 +134,9 @@ async function handleLogout() {
 .card1 {
   background: #ffffff;
   display: block;
-  font-family: 'SF Pro Text';
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
-  line-height: 18px;
 
   /* identical to box height */
 

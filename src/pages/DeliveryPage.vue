@@ -6,7 +6,7 @@
       <q-btn flat @click.prevent="" icon="favorite_border"></q-btn>
     </div>
     <div class="flex justify-center q-pt-xl">
-      <h5>Delivery</h5>
+      <h5>Endereço da Entrega</h5>
     </div>
     <div class="row no-wrap justify-between q-mx-xl">
       <span
