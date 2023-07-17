@@ -133,6 +133,11 @@ const routes: RouteRecordRaw[] = [
     path: '/:catchAll(.*)*',
     component: () => import('pages/ErrorNotFound.vue'),
   },
+
+  {
+    path: '/recuperar',
+    component: () => import('pages/PasswordRecovery.vue'),
+  },
 ];
 
 export default routes;
