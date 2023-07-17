@@ -67,8 +67,15 @@
           class="text-deep-orange-7 text-left q-mt-md"
           style="width: 314px; margin: 34px auto 0 auto"
         >
-          Esqueceu sua senha?
+          <router-link
+            class="text-deep-orange-7"
+            to="/recuperar"
+            style="display: inline-block; text-decoration: none"
+          >
+            <span> Esqueceu sua senha? </span>
+          </router-link>
         </div>
+
         <div style="margin-top: 130px">
           <q-btn
             color="deep-orange"
