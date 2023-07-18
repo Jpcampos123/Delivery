@@ -76,14 +76,17 @@
 </template>
 
 <script setup lang="ts">
+import axios from 'axios';
 import { useQuasar } from 'quasar';
 import { api } from 'src/boot/axios';
 import CategoryModalAdd from 'src/components/CategoryModalAdd.vue';
 import CategoryModalEdit from 'src/components/CategoryModalEdit.vue';
 import { UserStore } from 'src/stores/User';
-import { onBeforeMount, onMounted, ref } from 'vue';
+import { inject, onBeforeMount, onMounted, ref } from 'vue';
+import { Socket } from 'socket.io-client';
 
 // CONST
+const socket = inject('socket') as Socket;
 const confirm = ref(false);
 const confirmAdd = ref(false);
 const categories = <any>ref(null);
@@ -94,13 +97,23 @@ const modal = <any>ref(null);
 
 // FUNCTIONS
 
-onBeforeMount(() => {
-  return getCategorias();
+// onBeforeMount(() => {
+//   return getCategorias();
+// });
+
+socket.on('receive_message', (data) => {
+  categories.value = data;
 });
 
-// onMounted(() => {
 
-// });
+onMounted(() => {
+  socket.connect(); //Connect to socket server
+
+  socket.emit('findAllSocketTest', (data: any) => {
+  categories.value = data;
+  console.log(data);
+});
+});
 
 function handleAdd() {
   $q.loading.show();
@@ -109,8 +122,8 @@ function handleAdd() {
 }
 async function getCategorias() {
   $q.loading.show();
-  await api
-    .get('/category', {
+  await axios
+    .post('http://localhost:3000/webhooks/order', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
