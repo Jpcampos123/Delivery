@@ -66,7 +66,7 @@
         />
         <q-input
           v-model="complemento"
-          label="Complemento"
+          label="Complemento (Número, Quadra)"
           :loading="loading"
           color="deep-orange-7"
         />
@@ -198,7 +198,7 @@ async function getAdress() {
       } else {
         $q.notify({
           type: 'negative',
-          caption: 'Cep não encontrado',
+          caption: 'CEP não encontrado!',
           message: 'Link copiado com sucesso',
           color: 'negative',
         });

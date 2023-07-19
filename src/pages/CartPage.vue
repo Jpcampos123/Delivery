@@ -149,7 +149,6 @@
         </div>
       </transition-group>
     </div>
-    /
   </div>
 </template>
 
