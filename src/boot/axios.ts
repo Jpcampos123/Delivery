@@ -20,7 +20,7 @@ declare module '@vue/runtime-core' {
 //   'TEST-6201173609883364-112115-27ddfb7c2931c859bed9d4c1d05ed265-262243059';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://backend-delivery-ruby.vercel.app/',
   headers: {
     'Content-Type': 'application/json',
     Content: 'application/json',
