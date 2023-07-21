@@ -101,42 +101,62 @@ const modal = <any>ref(null);
 //   return getCategorias();
 // });
 
-socket.on('receive_message', (data) => {
-  categories.value = data;
-});
-
-
 onMounted(() => {
-  socket.connect(); //Connect to socket server
+  // socket.connect(); //Connect to socket server
+  getCategorias();
+  // updateCategorias();
+});
 
-  socket.emit('findAllSocketTest', (data: any) => {
-  categories.value = data;
-  console.log(data);
-});
-});
+async function getCategorias() {
+  await api
+    .get('/category', {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    })
+    .then((res) => {
+      categories.value = res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+// async function getCategorias() {
+//   await socket.emit('findAllSocketTest', (data: any) => {
+//     categories.value = data;
+//     console.log(data);
+//   });
+// }
+
+// async function updateCategorias() {
+//   await socket.on('receive_message', (data) => {
+//     categories.value = data;
+//   });
+// }
 
 function handleAdd() {
   $q.loading.show();
   confirmAdd.value = true;
   $q.loading.hide();
 }
-async function getCategorias() {
-  $q.loading.show();
-  await axios
-    .post('http://localhost:3000/webhooks/order', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then((res) => {
-      categories.value = res.data;
-      $q.loading.hide();
-    })
-    .catch((err) => {
-      console.log(err);
-      $q.loading.hide();
-    });
-}
+// async function getCategorias() {
+//   $q.loading.show();
+//   await axios
+//     .post('http://localhost:3000/webhooks/order', {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     })
+//     .then((res) => {
+//       categories.value = res.data;
+//       $q.loading.hide();
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       $q.loading.hide();
+//     });
+// }
 
 function handleEditModal(category: string) {
   $q.loading.show();

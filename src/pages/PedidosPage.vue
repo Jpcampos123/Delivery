@@ -25,18 +25,63 @@
           @click.prevent="handleAdd"
         />
       </div>
+      <div>
+        <q-list
+          v-for="order in orders"
+          :key="order.index"
+          style="align-items: center"
+        >
+          <q-item
+            @click.prevent=""
+            clickable
+            v-ripple
+            class="justify-between"
+            style="
+              max-width: 831px;
+              margin: 13px auto;
+              border-radius: 6px;
+              border: 1px solid #000;
+              background: #101026;
+            "
+          >
+            <div style="margin: 0 auto">
+              <q-item-label
+                class="text-white"
+                style="
+                  text-align: center;
+                  font-family: Roboto;
+                  font-size: 22px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                "
+                >{{ order.name }}</q-item-label
+              >
+              <q-item-label
+                class="text-white"
+                style="
+                  text-align: center;
+                  font-family: Roboto;
+                  font-size: 22px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                "
+                >{{ order.created_at }}</q-item-label
+              >
+            </div>
 
+            <q-icon name="delete" color="red" size="27px" />
+          </q-item>
+        </q-list>
+      </div>
     </div>
   </div>
 
-  <PedidosModal
-    v-if="confirmAdd"
-    @close="confirmAdd = false"
-
-  />
+  <PedidosModal v-if="confirmAdd" @close="confirmAdd = false" />
 </template>
 
-<script setup lang="ts">
+<script setup>
 import axios from 'axios';
 import { useQuasar } from 'quasar';
 import { api } from 'src/boot/axios';
@@ -48,38 +93,74 @@ import { Socket } from 'socket.io-client';
 import PedidosModal from 'src/components/PedidosModal.vue';
 
 // CONST
-const socket = inject('socket') as Socket;
+
 const confirm = ref(false);
 const confirmAdd = ref(false);
-const categories = <any>ref(null);
+const orders = ref(null);
 const store = UserStore();
-const token = <any>store.user.token;
+const token = store.user.token;
 const $q = useQuasar();
-const modal = <any>ref(null);
+const modal = ref(null);
+const pusher = new Pusher('5ef404ae72fb9d641074', {
+  cluster: 'sa1',
+});
 
 // FUNCTIONS
+
+onMounted(() => {
+  getAttOrders();
+  getOrders();
+});
+
+Pusher.logToConsole = true;
+
+async function getAttOrders() {
+  // console.log('1111111111111111111111111111111');
+  const channel = pusher.subscribe('my-channel');
+  channel.bind('my-event', function (data) {
+    console.log(data);
+    if (data.message) {
+      getOrders();
+    }
+  });
+}
 
 // onBeforeMount(() => {
 //   return getCategorias();
 // });
 
+// onMounted(() => {
+//   return getOrders();
+// });
 
+async function getOrders() {
+  await api
+    .get('/order/findAllOrders', {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    })
+    .then((res) => {
+      orders.value = res.data;
+      console.log(orders.value);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
-
-socket.emit('socketTest', (data:any) => {
-  console.log(data) // {msg1: 'test 1', msg2: 'test 2'}
-});
-onMounted(() => {
-  socket.connect(); //Connect to socket server
-});
-
+// socket.emit('socketTest', (data:any) => {
+//   console.log(data) // {msg1: 'test 1', msg2: 'test 2'}
+// });
+// onMounted(() => {
+//   socket.connect(); //Connect to socket server
+// });
 
 function handleAdd() {
   $q.loading.show();
   confirmAdd.value = true;
   $q.loading.hide();
 }
-
 </script>
 
 <style scoped></style>

@@ -41,7 +41,7 @@
           label="Confirmar"
           color="green"
           v-close-popup
-          @click.prevent="handlePedidosEdit"
+          @click.prevent=""
         />
       </q-card-actions>
     </q-card>
@@ -72,25 +72,25 @@ const socket = inject('socket') as Socket;
 
 const emit = defineEmits(['close']);
 
-onMounted(() => {
-  socket.connect(); //Connect to socket server
-});
+// onMounted(() => {
+//   socket.connect(); //Connect to socket server
+// });
 
 // onMounted(() => {
 //   return console.log(props.modal.id);
 // });
 
-async function handlePedidosEdit() {
-  $q.loading.show();
+// async function handlePedidosEdit() {
+//   $q.loading.show();
 
-  const data = {
-    name: pedidos.value,
-  };
+//   const data = {
+//     name: pedidos.value,
+//   };
 
-  socket.emit('send_message', data);
-  emit('close');
+//   socket.emit('send_message', data);
+//   emit('close');
 
-  $q.loading.hide();
-  //
-}
+//   $q.loading.hide();
+//   //
+// }
 </script>
