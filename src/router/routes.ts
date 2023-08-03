@@ -73,6 +73,12 @@ const routes: RouteRecordRaw[] = [
   },
 
   {
+    path: '/mainteste',
+    name: 'Mainteste',
+    component: () => import('src/layouts/MainTestePage.vue'),
+  },
+
+  {
     path: '/history',
     name: 'History',
     component: () => import('src/pages/HistoryPage.vue'),

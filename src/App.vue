@@ -16,7 +16,7 @@
 import { useRoute } from 'vue-router';
 import TabsNav from './components/TabsNav.vue';
 
-const routes = {};
+// const routes = {};
 
 // import { useRouter } from 'vue-router';
 // import { UserStore } from '../src/stores/User';

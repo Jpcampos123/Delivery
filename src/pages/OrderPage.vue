@@ -9,7 +9,7 @@
       <div></div>
     </div>
     <div class="q-pt-xl" style="text-align: center">
-      <img src="../assets/carrinho.svg" alt="carrinho" />
+      <img src="../assets/carrinho.svg" alt="carrinho" style="margin: 0 auto;" />
       <h4 class="text-h5">Sem Pedidos Ainda</h4>
       <div style="text-align: center">
         <span

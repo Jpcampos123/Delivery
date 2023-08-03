@@ -184,8 +184,8 @@ const token = <any>store.user.token;
 async function newOrder() {
   await api
     .post('/order', {
-      Headers: {
-        Authorization: `Bearer ${token}`,
+      headers: {
+        authorization: 'Bearer ' + token,
       },
     })
     .then((res) => {

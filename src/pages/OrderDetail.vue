@@ -11,14 +11,18 @@
     <div class="full-width justify-center">
       <div class="text-center q-mt-xl">
         <img
+          class=""
           :src="`https://backend-delivery-ruby.vercel.app/${items.banner}`"
           alt=""
           style="
+            margin: 0 auto;
             object-fit: cover;
             width: 350px;
             height: 242px;
             border-radius: 100px;
             box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
+
+
           "
         />
         <h5 class="text-center" style="">{{ items.name }}</h5>

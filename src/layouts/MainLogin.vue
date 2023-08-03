@@ -1,31 +1,33 @@
 <template>
-  <div style="background: #ededed">
-    <div class="cozinha q-mx-xs text-center">
+  <div class="cozinha q-mx-xs text-center">
+    <div>
       <img
         src="../assets/chapeu.svg"
         alt=""
         style="
+          margin: 0 auto;
           background: white;
           object-fit: cover;
           width: 263px;
           height: 190.38px;
-          margin-top: 15%;
+          margin-top: 10%;
         "
       />
       <h4>JJR</h4>
-      <q-tabs
-        v-model="tab"
-        no-caps
-        class="text-black bg-white"
-        active-color="black"
-        indicator-color="deep-orange-7"
-        style="top: 2%; width: 300px; margin: 0 auto"
-      >
-        <q-tab name="login" label="Login" />
-        <q-tab name="register" label="Registrar" />
-      </q-tabs>
     </div>
+    <q-tabs
+      v-model="tab"
+      no-caps
+      class="text-black bg-white mb-4"
+      active-color="black"
+      indicator-color="deep-orange-7"
+      style="top: 30%; width: 300px; margin: 0 auto"
+    >
+      <q-tab name="login" label="Login" />
+      <q-tab name="register" label="Registrar" />
+    </q-tabs>
   </div>
+
   <q-tab-panels
     v-model="tab"
     animated
@@ -246,6 +248,7 @@ async function handleLogin() {
       })
       .catch((err) => {
         loading.value = false;
+        $q.loading.hide();
         $q.notify({
           type: 'negative',
           caption: 'E-mail/Senha incorretos',
@@ -254,6 +257,7 @@ async function handleLogin() {
       });
   } catch (e) {
     console.log(e);
+    $q.loading.hide();
     loading.value = false;
   }
 }
@@ -352,13 +356,13 @@ h4 {
   height: 400px;
   left: 0px;
   top: -15px;
-  height: 630px;
+  /* height: 630px; */
   background: #ffffff;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.06);
+  /* box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.06); */
   border-radius: 30px;
 }
 
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
   .cozinha {
     height: 400px;
   }
@@ -368,5 +372,5 @@ h4 {
   .cozinha {
     height: 475px;
   }
-}
+} */
 </style>
