@@ -62,12 +62,14 @@
 import { useRoute, useRouter } from 'vue-router';
 import { useAddStoreCart } from 'src/stores/AddCart';
 import { ref } from 'vue';
+import { useQuasar } from 'quasar';
 //CONSTS
 const route = useRoute();
 const AddCart = useAddStoreCart();
 const loading = ref(false);
 const items = <any>route.query;
 const router = useRouter();
+const $q = useQuasar();
 //FUNCTIONS
 function handleBack() {
   router.back();

@@ -7,7 +7,8 @@
   >
     <q-card
       style="
-        min-width: 500px;
+        min-width: 365px;
+        width: 500px;
         border-radius: 30px;
         border-radius: 4px;
         background: #1d1d2e;
@@ -79,7 +80,7 @@ const detail = ref(true);
 const store = UserStore();
 const token = <any>store.user.token;
 const $q = useQuasar();
-const socket = inject('socket') as Socket;
+
 
 interface Modal {
   id: string | undefined;

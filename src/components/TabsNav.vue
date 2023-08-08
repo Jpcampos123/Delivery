@@ -12,24 +12,24 @@
       class="text-grey"
       style="width: 100%; margin: 0 auto; display: flex; background: white"
     >
-      <q-tab title="Home" name="home" icon="home" @click.prevent="handleMain" />
+      <q-tab title="Home" name="home" icon="home" @click.prevent="handleRoute('Dashboard')" />
       <q-tab
         title="Pedidos"
         name="order"
         icon="list_alt"
-        @click.prevent="handleOrder"
+        @click.prevent="handleRoute('Order')"
       />
       <q-tab
         title="Perfil"
         name="profile"
         icon="person"
-        @click.prevent="handleProfile"
+        @click.prevent="handleRoute('Perfil')"
       />
       <q-tab
         title="History"
         name="history"
         icon="history"
-        @click.prevent="handleHistory"
+        @click.prevent="handleRoute('History')"
       />
     </q-tabs>
   </div>
@@ -37,8 +37,9 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { UserStore } from '../stores/User';
+import { title } from 'process';
 
 // CONSTS
 // const props = defineProps({
@@ -46,27 +47,35 @@ import { UserStore } from '../stores/User';
 // });
 
 const tabs = ref('home');
-// onMounted(() => {
-//   console.log(props.tabs);
-// });
 const router = useRouter();
+const route = useRoute();
 const store = UserStore();
+
+// onMounted(() => {
+//   console.log(route.name);
+// });
 // FUNCTIONS
-function handleMain() {
-  router.push({ name: 'Dashboard' });
-}
 
-function handleOrder() {
-  router.push({ name: 'Order' });
-}
+function handleRoute(item:any) {
+  // console.log(route.name);
 
-function handleProfile() {
-  router.push({ name: 'Perfil' });
+  router.push({ name: item });
 }
+// function handleMain(e) {
+//   router.push({ name: 'Dashboard' });
+// }
 
-function handleHistory() {
-  router.push({ name: 'History' });
-}
+// function handleOrder() {
+//   router.push({ name: 'Order' });
+// }
+
+// function handleProfile() {
+//   router.push({ name: 'Perfil' });
+// }
+
+// function handleHistory() {
+//   router.push({ name: 'History' });
+// }
 </script>
 
 <style></style>

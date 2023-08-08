@@ -64,6 +64,24 @@
                 <!-- <img src="../../../backend-delivery/client/" alt="" />
                 `../../public/produto/${item.banner}` -->
                 <img
+                  v-if="!item.banner"
+                  src="../assets//image2.png"
+                  alt=""
+                  style="
+                    position: relative;
+                    object-fit: cover;
+                    object-fit: cover;
+                    width: 164.16px;
+                    height: 164.16px;
+                    left: 30px;
+                    top: -50px;
+                    border-radius: 100%;
+                    display: block;
+                    box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
+                  "
+                />
+                <img
+                  v-if="item.banner"
                   :src="`https://backend-delivery-ruby.vercel.app/${item.banner}`"
                   alt=""
                   style="
@@ -247,6 +265,7 @@ import { useRouter } from 'vue-router';
 // import db from '../../db.json';
 import { api } from 'src/boot/axios';
 import { UserStore } from 'src/stores/User';
+import { useQuasar } from 'quasar';
 
 // CONSTS
 const text = ref(null);
@@ -256,9 +275,19 @@ const router = useRouter();
 const MyProduct = <any>ref(null);
 const store = UserStore();
 const token = <any>store.user.token;
+const $q = useQuasar();
 
 onBeforeMount(() => {
-  return api
+  getProduct();
+});
+
+// onMounted(() => {});
+
+// FUNCTIONS
+
+async function getProduct() {
+  $q.loading.show();
+  await api
     .get('/product', {
       headers: {
         Authorization: 'Bearer ' + token,
@@ -266,13 +295,13 @@ onBeforeMount(() => {
     })
     .then((res) => {
       MyProduct.value = res.data;
+      $q.loading.hide();
     })
-    .catch((err) => console.log(err));
-});
-
-// onMounted(() => {});
-
-// FUNCTIONS
+    .catch((err) => {
+      console.log(err);
+      $q.loading.hide();
+    });
+}
 
 function handleOrderDetail(item: any) {
   router.push({ name: 'OrderDetail', query: item });

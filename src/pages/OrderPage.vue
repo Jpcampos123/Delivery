@@ -26,7 +26,7 @@
 
             opacity: 0.57;
           "
-          >Clique no botão "Fazer Pedido" para fazer o primeiro pedido.</span
+          >Clique no botão para fazer o pedido.</span
         >
       </div>
       <div class="q-pt-xl">
