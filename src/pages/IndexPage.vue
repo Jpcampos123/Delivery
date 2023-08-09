@@ -82,7 +82,7 @@
                 />
                 <img
                   v-if="item.banner"
-                  :src="`https://backend-delivery-ruby.vercel.app/${item.banner}`"
+                  :src="`https://storage-delivery.s3.sa-east-1.amazonaws.com/${item.banner}`"
                   alt=""
                   style="
                     position: relative;
@@ -169,7 +169,7 @@
                 @click.prevent="handleOrderDetail(item)"
               >
                 <img
-                  :src="`https://backend-delivery-ruby.vercel.app/${item.banner}`"
+                  :src="`https://storage-delivery.s3.sa-east-1.amazonaws.com/${item.banner}`"
                   alt=""
                   style="
                     position: relative;
@@ -221,7 +221,7 @@
                 @click.prevent="handleOrderDetail(item)"
               >
                 <img
-                  :src="`https://backend-delivery-ruby.vercel.app/${item.banner}`"
+                  :src="`https://storage-delivery.s3.sa-east-1.amazonaws.com/${item.banner}`"
                   alt=""
                   style="
                     position: relative;
